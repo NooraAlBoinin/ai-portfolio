@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Portfolio | Exploring Artificial Intelligence</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        pastelBlue: '#A7C7E7',
+                        pastelPink: '#FFD1DC',
+                        pastelGreen: '#C1E1C1',
+                        pastelPurple: '#D8BFD8',
+                        pastelYellow: '#FDFD96',
+                        pastelPeach: '#FFDAB9',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #A7C7E7 0%, #FFD1DC 100%);
+        }
+        
+        .module-card {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .module-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .floating {
+            animation: floating 6s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .page-transition {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm fixed w-full z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i class="fas fa-robot text-2xl text-pastelPurple mr-2"></i>
+                        <span class="text-xl font-semibold text-gray-800">AI Portfolio</span>
+                    </div>
+                </div>
+                <div class="hidden md:ml-6 md:flex md:items-center md:space-x-8">
+                    <a href="#home" class="text-gray-800 hover:text-pastelPurple px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                    <a href="#about" class="text-gray-800 hover:text-pastelPurple px-3 py-2 rounded-md text-sm font-medium">About</a>
+                    <a href="#modules" class="text-gray-800 hover:text-pastelPurple px-3 py-2 rounded-md text-sm font-medium">Modules</a>
+                    <a href="#projects" class="text-gray-800 hover:text-pastelPurple px-3 py-2 rounded-md text-sm font-medium">Projects</a>
+                    <a href="#contact" class="text-gray-800 hover:text-pastelPurple px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+                </div>
+                <div class="-mr-2 flex items-center md:hidden">
+                    <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-800 hover:text-pastelPurple focus:outline-none">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg rounded-b-lg">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="text-gray-800 hover:text-pastelPurple block px-3 py-2 rounded-md text-base font-medium">Home</a>
+                <a href="#about" class="text-gray-800 hover:text-pastelPurple block px-3 py-2 rounded-md text-base font-medium">About</a>
+                <a href="#modules" class="text-gray-800 hover:text-pastelPurple block px-3 py-2 rounded-md text-base font-medium">Modules</a>
+                <a href="#projects" class="text-gray-800 hover:text-pastelPurple block px-3 py-2 rounded-md text-base font-medium">Projects</a>
+                <a href="#contact" class="text-gray-800 hover:text-pastelPurple block px-3 py-2 rounded-md text-base font-medium">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <div id="content" class="page-transition">
+        <!-- Home Section -->
+        <section id="home" class="gradient-bg pt-24 pb-16 md:pt-32 md:pb-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="md:flex md:items-center md:justify-between">
+                    <div class="md:w-1/2 text-center md:text-left">
+                        <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Exploring the World of <span class="text-white">Artificial Intelligence</span></h1>
+                        <p class="text-lg text-gray-700 mb-8">Discover my journey through AI research, development, and innovation across five specialized modules.</p>
+                        <div class="flex flex-col sm:flex-row justify-center md:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
+                            <a href="#modules" class="bg-white text-pastelPurple hover:bg-gray-100 px-6 py-3 rounded-lg font-medium shadow-md transition duration-300">Explore Modules</a>
+                            <a href="#contact" class="bg-pastelPurple text-white hover:bg-purple-300 px-6 py-3 rounded-lg font-medium shadow-md transition duration-300">Get in Touch</a>
+                        </div>
+                    </div>
+                    <div class="hidden md:block md:w-1/2 mt-8 md:mt-0">
+                        <div class="relative">
+                            <img src="https://cdn-icons-png.flaticon.com/512/3344/3344372.png" alt="AI Illustration" class="w-full max-w-md mx-auto floating">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-16 bg-pastelPeach">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4">About My AI Journey</h2>
+                    <div class="w-20 h-1 bg-pastelPurple mx-auto mb-6"></div>
+                    <p class="text-lg text-gray-700 max-w-3xl mx-auto">I'm passionate about exploring the frontiers of artificial intelligence and its applications to solve real-world problems. My portfolio showcases five key areas of focus in AI research and development.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-white p-6 rounded-xl shadow-md text-center">
+                        <div class="bg-pastelBlue text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-brain text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Research Focus</h3>
+                        <p class="text-gray-600">Specializing in machine learning, neural networks, and ethical AI development.</p>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-xl shadow-md text-center">
+                        <div class="bg-pastelPink text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-project-diagram text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Practical Applications</h3>
+                        <p class="text-gray-600">Developing AI solutions for healthcare, finance, and environmental sustainability.</p>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-xl shadow-md text-center">
+                        <div class="bg-pastelGreen text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-users text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Community Engagement</h3>
+                        <p class="text-gray-600">Active in AI education and open-source contributions to democratize AI technology.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modules Section -->
+        <section id="modules" class="py-16 bg-pastelYellow">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4">My AI Modules</h2>
+                    <div class="w-20 h-1 bg-pastelPurple mx-auto mb-6"></div>
+                    <p class="text-lg text-gray-700 max-w-3xl mx-auto">Explore my five specialized modules covering different aspects of artificial intelligence.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Module 1 -->
+                    <div class="module-card bg-white rounded-xl overflow-hidden cursor-pointer" onclick="loadModule('neural-networks')">
+                        <div class="bg-pastelBlue p-6">
+                            <div class="flex items-center">
+                                <div class="bg-white text-pastelBlue w-12 h-12 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-network-wired text-xl"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-gray-800">Neural Networks</h3>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-gray-600 mb-4">Deep dive into the architecture and training of various neural network models including CNNs, RNNs, and Transformers.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-pastelBlue font-medium">Click to explore</span>
+                                <i class="fas fa-arrow-right text-pastelBlue"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Module 2 -->
+                    <div class="module-card bg-white rounded-xl overflow-hidden cursor-pointer" onclick="loadModule('machine-learning')">
+                        <div class="bg-pastelPink p-6">
+                            <div class="flex items-center">
+                                <div class="bg-white text-pastelPink w-12 h-12 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-chart-line text-xl"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-gray-800">Machine Learning</h3>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-gray-600 mb-4">Comprehensive coverage of supervised, unsupervised, and reinforcement learning algorithms.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-pastelPink font-medium">Click to explore</span>
+                                <i class="fas fa-arrow-right text-pastelPink"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Module 3 -->
+                    <div class="module-card bg-white rounded-xl overflow-hidden cursor-pointer" onclick="loadModule('nlp')">
+                        <div class="bg-pastelGreen p-6">
+                            <div class="flex items-center">
+                                <div class="bg-white text-pastelGreen w-12 h-12 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-language text-xl"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-gray-800">NLP</h3>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-gray-600 mb-4">Natural Language Processing techniques from traditional methods to modern transformer-based approaches.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-pastelGreen font-medium">Click to explore</span>
+                                <i class="fas fa-arrow-right text-pastelGreen"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Module 4 -->
+                    <div class="module-card bg-white rounded-xl overflow-hidden cursor-pointer" onclick="loadModule('computer-vision')">
+                        <div class="bg-pastelPurple p-6">
+                            <div class="flex items-center">
+                                <div class="bg-white text-pastelPurple w-12 h-12 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-eye text-xl"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-gray-800">Computer Vision</h3>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-gray-600 mb-4">Techniques for image processing, object detection, and scene understanding using deep learning.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-pastelPurple font-medium">Click to explore</span>
+                                <i class="fas fa-arrow-right text-pastelPurple"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Module 5 -->
+                    <div class="module-card bg-white rounded-xl overflow-hidden cursor-pointer" onclick="loadModule('ethical-ai')">
+                        <div class="bg-pastelPeach p-6">
+                            <div class="flex items-center">
+                                <div class="bg-white text-pastelPeach w-12 h-12 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-balance-scale text-xl"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-gray-800">Ethical AI</h3>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-gray-600 mb-4">Exploring the ethical implications, bias mitigation, and responsible development of AI systems.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-pastelPeach font-medium">Click to explore</span>
+                                <i class="fas fa-arrow-right text-pastelPeach"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-16 bg-pastelBlue">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4">Featured AI Projects</h2>
+                    <div class="w-20 h-1 bg-pastelPurple mx-auto mb-6"></div>
+                    <p class="text-lg text-gray-700 max-w-3xl mx-auto">Practical implementations of AI concepts across various domains.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Project 1 -->
+                    <div class="bg-white rounded-xl overflow-hidden shadow-md">
+                        <div class="h-48 bg-pastelPink flex items-center justify-center">
+                            <i class="fas fa-heartbeat text-6xl text-white"></i>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Medical Diagnosis AI</h3>
+                            <p class="text-gray-600 mb-4">Deep learning system for early detection of diseases from medical imaging.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-pastelBlue text-white px-3 py-1 rounded-full text-xs">CNN</span>
+                                <span class="bg-pastelGreen text-white px-3 py-1 rounded-full text-xs">TensorFlow</span>
+                                <span class="bg-pastelPurple text-white px-3 py-1 rounded-full text-xs">Medical Imaging</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 2 -->
+                    <div class="bg-white rounded-xl overflow-hidden shadow-md">
+                        <div class="h-48 bg-pastelGreen flex items-center justify-center">
+                            <i class="fas fa-comments text-6xl text-white"></i>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Sentiment Analysis Tool</h3>
+                            <p class="text-gray-600 mb-4">Real-time sentiment analysis of customer feedback across multiple channels.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-pastelBlue text-white px-3 py-1 rounded-full text-xs">NLP</span>
+                                <span class="bg-pastelPink text-white px-3 py-1 rounded-full text-xs">BERT</span>
+                                <span class="bg-pastelYellow text-white px-3 py-1 rounded-full text-xs">Sentiment Analysis</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 3 -->
+                    <div class="bg-white rounded-xl overflow-hidden shadow-md">
+                        <div class="h-48 bg-pastelPurple flex items-center justify-center">
+                            <i class="fas fa-car text-6xl text-white"></i>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Autonomous Vehicle Simulation</h3>
+                            <p class="text-gray-600 mb-4">Reinforcement learning environment for training self-driving algorithms.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-pastelBlue text-white px-3 py-1 rounded-full text-xs">RL</span>
+                                <span class="bg-pastelGreen text-white px-3 py-1 rounded-full text-xs">PyTorch</span>
+                                <span class="bg-pastelPeach text-white px-3 py-1 rounded-full text-xs">Simulation</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-12">
+                    <a href="#" class="inline-flex items-center text-gray-800 hover:text-pastelPurple font-medium">
+                        View All Projects
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-16 bg-pastelPurple">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-white mb-4">Get In Touch</h2>
+                    <div class="w-20 h-1 bg-white mx-auto mb-6"></div>
+                    <p class="text-lg text-white max-w-3xl mx-auto">Interested in collaborating or learning more about my AI projects? Reach out to me!</p>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-xl overflow-hidden">
+                    <div class="md:flex">
+                        <div class="md:w-1/2 bg-pastelPink p-8 md:p-12 flex flex-col justify-center">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-4">Contact Information</h3>
+                            <div class="space-y-4">
+                                <div class="flex items-start">
+                                    <div class="bg-white text-pastelPink w-10 h-10 rounded-full flex items-center justify-center mr-4 mt-1">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-800">Email</h4>
+                                        <p class="text-gray-600">ai.portfolio@example.com</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="bg-white text-pastelPink w-10 h-10 rounded-full flex items-center justify-center mr-4 mt-1">
+                                        <i class="fas fa-phone-alt"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-800">Phone</h4>
+                                        <p class="text-gray-600">+1 (555) 123-4567</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="bg-white text-pastelPink w-10 h-10 rounded-full flex items-center justify-center mr-4 mt-1">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-800">Location</h4>
+                                        <p class="text-gray-600">San Francisco, CA</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-8">
+                                <h4 class="font-semibold text-gray-800 mb-4">Connect With Me</h4>
+                                <div class="flex space-x-4">
+                                    <a href="#" class="bg-white text-pastelPink w-10 h-10 rounded-full flex items-center justify-center hover:bg-gray-100 transition duration-300">
+                                        <i class="fab fa-linkedin-in"></i>
+                                    </a>
+                                    <a href="#" class="bg-white text-pastelPink w-10 h-10 rounded-full flex items-center justify-center hover:bg-gray-100 transition duration-300">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                    <a href="#" class="bg-white text-pastelPink w-10 h-10 rounded-full flex items-center justify-center hover:bg-gray-100 transition duration-300">
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+                                    <a href="#" class="bg-white text-pastelPink w-10 h-10 rounded-full flex items-center justify-center hover:bg-gray-100 transition duration-300">
+                                        <i class="fab fa-medium"></i>
+                                    </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="md:w-1/2 p-8 md:p-12">
+                        <form class="space-y-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                                <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pastelPurple focus:border-pastelPurple" placeholder="Your name">
+                            </div>
+                            
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-7 mb-1">Email Address</label>
+                                <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pastelPurple focus:border-pastelPurple" placeholder="your.email@example.com">
+                            </div>
+                            
+                            <div>
+                                <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">Subject</label>
+                                <input type="text" id="subject" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pastelPurple focus:border-pastelPurple" placeholder="How can I help you?">
+                            </div>
+                            
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+                                <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pastelPurple focus:border-pastelPurple" placeholder="Your message here..."></textarea>
+                            </div>
+                            
+                            <button type="submit" class="w-full bg-pastelPurple text-white py-3 px-6 rounded-lg font-medium hover:bg-purple-400 transition duration-300 flex items-center justify-center">
+                                <i class="fas fa-paper-plane mr-2"></i> Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Module Pages (hidden by default) -->
+    <div id="module-pages" class="hidden">
+        <!-- Neural Networks Module -->
+        <div id="neural-networks-page" class="page-transition py-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center mb-8">
+                    <button onclick="goBack()" class="flex items-center text-pastelBlue hover:text-pastelPurple">
+                        <i class="fas fa-arrow-left mr-2"></i> Back to Modules
+                    </button>
+                    <span class="bg-pastelBlue text-white px-4 py-2 rounded-full text-sm font-medium">Neural Networks</span>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-xl overflow-hidden">
+                    <div class="md:flex">
+                        <div class="md:w-1/3 bg-pastelBlue p-8 md:p-12 flex flex-col justify-center">
+                            <div class="text-center mb-8">
+                                <div class="bg-white text-pastelBlue w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <i class="fas fa-network-wired text-3xl"></i>
+                                </div>
+                                <h2 class="text-2xl font-bold text-gray-800">Neural Networks</h2>
+                                <p class="text-gray-600 mt-2">Deep Learning Architectures</p>
+                            </div>
+                            
+                            <div class="space-y-4">
+                                <div class="flex items-center">
+                                    <div class="bg-white text-pastelBlue w-10 h-10 rounded-full flex items-center justify-center mr-4">
+                                        <i class="fas fa-layer-group"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-800">Architectures</h4>
+                                        <p class="text-gray-600 text-sm">CNNs, RNNs, Transformers</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-center">
+                                    <div class="bg-white text-pastelBlue w-10 h-10 rounded-full flex items-center justify-center mr-4">
+                                        <i class="fas fa-cogs"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-800">Training</h4>
+                                        <p class="text-gray-600 text-sm">Backpropagation, Optimization</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-center">
+                                    <div class="bg-white text-pastelBlue w-10 h-10 rounded-full flex items-center justify-center mr-4">
+                                        <i class="fas fa-chart-line"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-800">Performance</h4>
+                                        <p class="text-gray-600 text-sm">Metrics & Evaluation</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="md:w-2/3 p-8 md:p-12">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-6">Neural Network Fundamentals</h3>
+                            <p class="text-gray-600 mb-6">Neural networks are computing systems inspired by the biological neural networks that constitute animal brains. They learn to perform tasks by considering examples, generally without being programmed with task-specific rules.</p>
+                            
+                            <div class="mb-8">
+                                <h4 class="text-xl font-semibold text-gray-800 mb-4">Key Concepts</h4>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="bg-gray-50 p-4 rounded-lg">
+                                        <h5 class="font-medium text-gray-800 mb-2">Feedforward Networks</h5>
+                                        <p class="text-gray-600 text-sm">The simplest type of artificial neural network where connections between nodes do not form cycles.</p>
+                                    </div>
+                                    <div class="bg-gray-50 p-4 rounded-lg">
+                                        <h5 class="font-medium text-gray-800 mb-2">Backpropagation</h5>
+                                        <p class="text-gray-600 text-sm">Algorithm for training feedforward neural networks using gradient descent.</p>
+                                    </div>
+                                    <div class="bg-gray-50 p-4 rounded-lg">
+                                        <h5 class="font-medium text-gray-800 mb-2">Activation Functions</h5>
+                                        <p class="text-gray-600 text-sm">Functions like ReLU, Sigmoid, and Tanh that introduce non-linearity to the network.</p>
+                                    </div>
+                                    <div class="bg-gray-50 p-4 rounded-lg">
+                                        <h5 class="font-medium text-gray-800 mb-2">Regularization</h5>
+                                        <p class="text-gray-600 text-sm">Techniques like dropout and L2 regularization to prevent overfitting.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-8">
+                                <h4 class="text-xl font-semibold text-gray-800 mb-4">Applications</h4>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="bg-pastelBlue text-white px-3 py-1 rounded-full text-xs">Image Recognition</span>
+                                    <span class="bg-pastelPink text-white px-3 py-1 rounded-full text-xs">Speech Recognition</span>
+                                    <span class="bg-pastelGreen text-white px-3 py-1 rounded-full text-xs">Natural Language Processing</span>
+                                    <span class="bg-pastelPurple text-white px-3 py-1 rounded-full text-xs">Autonomous Vehicles</span>
+                                </div>
+                                <p class="text-gray-600">Neural networks have been successfully applied to a wide variety of tasks including computer vision, speech recognition, machine translation, medical diagnosis, and playing board and video games.</p>
+                            </div>
+                            
+                            <div>
+                                <h4 class="text-xl font-semibold text-gray-800 mb-4">Related Projects</h4>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition duration-300">
+                                        <h5 class="font-medium text-gray-800 mb-2">Image Classification</h5>
+                                        <p class="text-gray-600 text-sm mb-2">CNN model for classifying images into 1000 categories.</p>
+                                        <div class="flex flex-wrap gap-1">
+                                            <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-xs">Python</span>
+                                            <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-xs">TensorFlow</span>
+                                        </div>
+                                    </div>
+                                    <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition duration-300">
+                                        <h5 class="font-medium text-gray-800 mb-2">Time Series Prediction</h5>
+                                        <p class="text-gray-600 text-sm mb-2">LSTM network for forecasting stock prices.</p>
+                                        <div class="flex flex-wrap gap-1">
+                                            <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-xs">Python</span>
+                                            <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-xs">PyTorch</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Machine Learning Module -->
+        <div id="machine-learning-page" class="page-transition py-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center mb-8">
+                    <button onclick="goBack()" class="flex items-center text-pastelPink hover:text-pastelPurple">
+                        <i class="fas fa-arrow-left mr-2"></i> Back to Modules
+                    </button>
+                    <span class="bg-pastelPink text-white px-4 py-2 rounded-full text-sm font-medium">Machine Learning</span>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-xl overflow-hidden">
+                    <div class="md:flex">
+                        <div class="md:w-1/3 bg-pastelPink p-8 md:p-12 flex flex-col justify-center">
+                            <div class="text-center mb-8">
+                                <div class="bg-white text-pastelPink w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <i class="fas fa-chart-line text-3xl"></i>
+                                </div>
+                                <h2 class="text-2xl font-bold text-gray-800">Machine Learning</h2>
+                                <p class="text-gray-600 mt-2">Algorithms & Techniques</p>
+                            </div>
+                            
+                            <div class="space-y-4">
+                                <div class="flex items-center">
+                                    <div class="bg-white text-pastelPink w-10 h-10 rounded-full flex items-center justify-center mr-4">
+                                        <i class="fas fa-project-diagram"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-800">Supervised</h4>
+                                        <p class="text-gray-600 text-sm">Regression, Classification</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-center">
+                                    <div class="bg-white text-pastelPink w-10 h-10 rounded-full flex items-center justify-center mr-4">
+                                        <i class="fas fa-sitemap"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-800">Unsupervised</h4>
+                                        <p class="text-gray-600 text-sm">Clustering, Dimensionality</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-center">
+                                    <div class="bg-white text-pastelPink w-10 h-10 rounded-full flex items-center justify-center mr-4">
+                                        <i class="fas fa-trophy"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-800">Reinforcement</h4>
+                                        <p class="text-gray-600 text-sm">Q-learning, Policy Gradients</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="md:w-2/3 p-8 md:p-12">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-6">Machine Learning Fundamentals</h3>
+                            <p class="text-gray-600 mb-6">Machine learning is the study of computer algorithms that improve automatically through experience. It is seen as a subset of artificial intelligence that provides systems the ability to automatically learn and improve from experience without being explicitly programmed.</p>
+                            
+                            <div class="mb-8">
+                                <h4 class="text-xl font-semibold text-gray-800 mb-4">Key Algorithms</h4>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="bg-gray-50 p-4 rounded-lg">
+                                        <h5 class="font-medium text-gray-800 mb-2">Linear Regression</h5>
+                                        <p class="text-gray-600 text-sm">A linear approach to modeling the relationship between variables.</p>
+                                    </div>
+                                    <div class="bg-gray-50 p-4 rounded-lg">
+                                        <h5 class="font-medium text-gray-800 mb-2">Decision Trees</h5>
+                                        <p class="text-gray-600 text-sm">A flowchart-like structure for classification and regression.</p>
+                                    </div>
+                                    <div class="bg-gray-50 p-4 rounded-lg">
+                                        <h5 class="font-medium text-gray-800 mb-2">Support Vector Machines</h5>
+                                        <p class="text-gray-600 text-sm">Supervised learning models for classification and regression.</p>
+                                    </div>
+                                    <div class="bg-gray-50 p-4 rounded-lg">
+                                        <h5 class="font-medium text-gray-800 mb-2">K-Means Clustering</h5>
+                                        <p class="text-gray-600 text-sm">Unsupervised learning algorithm for cluster analysis.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-8">
+                                <h4 class="text-xl font-semibold text-gray-800 mb-4">Applications</h4>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="bg-pastelPink text-white px-3 py-1 rounded-full text-xs">Predictive Analytics</span>
+                                    <span class="bg-pastelBlue text-white px-3 py-1 rounded-full text-xs">Recommendation Systems</span>
+                                    <span class="bg-pastelGreen text-white px-3 py-1 rounded-full text-xs">Fraud Detection</span>
+                                    <span class="bg-pastelPurple text-white px-3 py-1 rounded-full text-xs">Customer Segmentation</span>
+                                </div>
+                                <p class="text-gray-600">Machine learning is used in a wide range of applications such as email filtering, computer vision, natural language processing, bioinformatics, and economics where it is difficult or unfeasible to develop conventional algorithms to perform the needed tasks.</p>
+                            </div>
+                            
+                            <div>
+                                <h4 class="text-xl font-semibold text-gray-800 mb-4">Related Projects</h4>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition duration-300">
+                                        <h5 class="font-medium text-gray-800 mb-2">Customer Churn Prediction</h5>
+                                        <p class="text-gray-600 text-sm mb-2">Predict which customers are likely to stop using a service.</p>
+                                        <div class="flex flex-wrap gap-1">
+                                            <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-xs">Python</span>
+                                            <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-xs">Scikit-learn</span>
+                                        </div>
+                                    </div>
+                                    <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition duration-300">
+                                        <h5 class="font-medium text-gray-800 mb-2">Movie Recommendation</h5>
+                                        <p class="text-gray-600 text-sm mb-2">Collaborative filtering system for movie recommendations.</p>
+                                        <div class="flex flex-wrap gap-1">
+                                            <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-xs">Python</span>
+                                            <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-xs">Surprise</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- NLP Module -->
+        <div id="nlp-page" class="page-transition py-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center mb-8">
+                    <button onclick="goBack()" class="flex items-center text-pastelGreen hover:text-pastelPurple">
+                        <i class="fas fa-arrow-left mr-2"></i> Back to Modules
+                    </button>
+                    <span class="bg-pastelGreen text-white px-4 py-2 rounded-full text-sm font-medium">Natural Language Processing</span>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-xl overflow-hidden">
+                    <div class="md:flex">
+                        <div class="md:w-1/3 bg-pastelGreen p-8 md:p-12 flex flex-col justify-center">
+                            <div class="text-center mb-8">
+                                <div class="bg-white text-pastelGreen w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <i class="fas fa-language text-3xl"></i>
+                                </div>
+                                <h2 class="text-2xl font-bold text-gray-800">NLP</h2>
+                                <p class="text-gray-600 mt-2">Language Understanding</p>
+                            </div>
+                            
+                            <div class="space-y-4">
+                                <div class="flex items-center">
+                                    <div class="bg-white text-pastelGreen w-10 h-10 rounded-full flex items-center justify-center mr-4">
+                                        <i class="fas fa-text-width"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-800">Text Processing</h4>
+                                        <p class="text-gray-600 text-sm">Tokenization, Stemming</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-center">
+                                    <div class="bg-white text-pastelGreen w-10 h-10 rounded-full flex items-center justify-center mr-4">
+                                        <i class="fas fa-comment-dots"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-800">Sentiment Analysis</h4>
+                                        <p class="text-gray-600 text-sm">Opinion Mining</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-center">
+                                    <div class="bg-white text-pastelGreen w-10 h-10 rounded-full flex items-center justify-center mr-4">
+                                        <i class="fas fa-robot"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-800">Language Models</h4>
+                                        <p class="text-gray-600 text-sm">Transformers, BERT</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="md:w-2/3 p-8 md:p-12">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-6">Natural Language Processing</h3>
+                            <p class="text-gray-600 mb-6">Natural language processing (NLP) is a subfield of linguistics, computer science, and artificial intelligence concerned with the interactions between computers and human language, in particular how to program computers to process and analyze large amounts of natural language data.</p>
+                            
+                            <div class="mb-8">
+                                <h4 class="text-xl font-semibold text-gray-800 mb-4">Key Techniques</h4>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="bg-gray-50 p-4 rounded-lg">
+                                        <h5 class="font-medium text-gray-800 mb-2">Tokenization</h5>
+                                        <p class="text-gray-600 text-sm">Breaking text into words, phrases, symbols, or other meaningful elements.</p>
+                                    </div>
+                                    <div class="bg-gray-50 p-4 rounded-lg">
+                                        <h5 class="font-medium text-gray-800 mb-2">Named Entity Recognition</h5>
+                                        <p class="text-gray-600 text-sm">Identifying and classifying named entities in text.</p>
+                                    </div>
+                                    <div class="bg-gray-50 p-4 rounded-lg">
+                                        <h5 class="font-medium text-gray-800 mb-2">Word Embeddings</h5>
+                                        <p class="text-gray-600 text-sm">Representation of words in a continuous vector space.</p>
+                                    </div>
+                                    <div class="bg-gray-50 p-4 rounded-lg">
+                                        <h5 class="font-medium text-gray-800 mb-2">Sequence-to-Sequence</h5>
+                                        <p class="text-gray-600 text-sm">Models that transform one sequence into another.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-8">
+                                <h4 class="text-xl font-semibold text-gray-800 mb-4">Applications</h4>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="bg-pastelGreen text-white px-3 py-1 rounded-full text-xs">Machine Translation</span>
+                                    <span class="bg-pastelBlue text-white px-3 py-1 rounded-full text-xs">Chatbots</span>
+                                    <span class="bg-pastelPink text-white px-3 py-1 rounded-full text-xs">Text Summarization</span>
+                                    <span class="bg-pastelPurple text-white px-3 py-1 rounded-full text-xs">Speech Recognition</span>
+                                </div>
+                                <p class="text-gray-600">NLP has applications in many fields including machine translation, document summarization, question answering, sentiment analysis, speech recognition, and text-to-speech synthesis. It is also used in search engines, email spam filtering, and grammar checking software.</p>
+                            </div>
+                            
+                            <div>
+                                <h4 class="text-xl font-semibold text-gray-800 mb-4">Related Projects</h4>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition duration-300">
+                                        <h5 class="font-medium text-gray-800 mb-2">Text Summarizer</h5>
+                                        <p class="text-gray-600 text-sm mb-2">Extractive summarization of news articles.</p>
+                                        <div class="flex flex-wrap gap-1">
+                                            <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-xs">Python</span>
+                                            <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-xs">NLTK</span>
+                                        </div>
+                                    </div>
+                                    <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition duration-300">
+                                        <h5 class="font-medium text-gray-800 mb-2">Sentiment Analyzer</h5>
+                                        <p class="text-gray-600 text-sm mb-2">Analyze sentiment of product reviews.</p>
+                                        <div class="flex flex-wrap gap-1">
+                                            <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-xs">Python</span>
+                                            <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-xs">Transformers</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Computer Vision Module -->
+        <div id="computer-vision-page" class="page-transition py-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center mb-8">
+                    <button onclick="goBack()" class="flex items-center text-pastelPurple hover:text-pastelPurple">
+                        <i class="fas fa-arrow-left mr-2"></i> Back to Modules
+                    </button>
+                    <span class="bg-pastelPurple text-white px-4 py-2 rounded-full text-sm font-medium">Computer Vision</span>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-xl overflow-hidden">
+                    <div class="md:flex">
+                        <div class="md:w-1/3 bg-pastelPurple p-8 md:p-12 flex flex-col justify-center">
+                            <div class="text-center mb-8">
+                                <div class="bg-white text-pastelPurple w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <i class="fas fa-eye text-3xl"></i>
+                                </div>
+                                <h2 class="text-2xl font-bold text-gray-800">Computer Vision</h2>
+                                <p class="text-gray-600 mt-2">Image Understanding</p>
+                            </div>
+                            
+                            <div class="space-y-4">
+                                <div class="flex items-center">
+                                    <div class="bg-white text-pastelPurple w-10 h-10 rounded-full flex items-center justify-center mr-4">
+                                        <i class="fas fa-object-group"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-800">Object Detection</h4>
+                                        <p class="text-gray-600 text-sm">YOLO, Faster R-CNN</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-center">
+                                    <div class="bg-white text-pastelPurple w-10 h-10 rounded-full flex items-center justify-center mr-4">
+                                        <i class="fas fa-image"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-800">Image Segmentation</h4>
+                                        <p class="text-gray-600 text-sm">Semantic, Instance</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-center">
+                                    <div class="bg-white text-pastelPurple w-10 h-10 rounded-full flex items-center justify-center mr-4">
+                                        <i class="fas fa-video"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-800">Video Analysis</h4>
+                                        <p class="text-gray-600 text-sm">Action Recognition</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="md:w-2/3 p-8 md:p-12">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-6">Computer Vision</h3>
+                            <p class="text-gray-600 mb-6">Computer vision is an interdisciplinary scientific field that deals with how computers can gain high-level understanding from digital images or videos. From the perspective of engineering, it seeks to understand and automate tasks that the human visual system can do.</p>
+                            
+                            <div class="mb-8">
+                                <h4 class="text-xl font-semibold text-gray-800 mb-4">Key Techniques</h4>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="bg-gray-50 p-4 rounded-lg">
+                                        <h5 class="font-medium text-gray-800 mb-2">Image Classification</h5>
+                                        <p class="text-gray-600 text-sm">Assigning a label to an entire image from a fixed set of categories.</p>
+                                    </div>
+                                    <div class="bg-gray-50 p-4 rounded-lg">
+                                        <h5 class="font-medium text-gray-800 mb-2">Object Detection</h5>
+                                        <p class="text-gray-600 text-sm">Identifying objects within an image and drawing bounding boxes.</p>
+                                    </div>
+                                    <div class="bg-gray-50 p-4 rounded-lg">
+                                        <h5 class="font-medium text-gray-800 mb-2">Semantic Segmentation</h5>
+                                        <p class="text-gray-600 text-sm">Classifying each pixel in an image to a particular class.</p>
+                                    </div>
+                                    <div class="bg-gray-50 p-4 rounded-lg">
+                                        <h5 class="font-medium text-gray-800 mb-2">Pose Estimation</h5>
+                                        <p class="text-gray-600 text-sm">Detecting the configuration of human body parts in images.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-8">
+                                <h4 class="text-xl font-semibold text-gray-800 mb-4">Applications</h4>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="bg-pastelPurple text-white px-3 py-1 rounded-full text-xs">Facial Recognition</span>
+                                    <span class="bg-pastelBlue text-white px-3 py-1 rounded-full text-xs">Medical Imaging</span>
+                                    <span class="bg-pastelGreen text-white px-3 py-1 rounded-full text-xs">Autonomous Vehicles</span>
+                                    <span class="bg-pastelPink text-white px-3 py-1 rounded-full text-xs">Augmented Reality</span>
+                                </div>
+                                <p class="text-gray-600">Computer vision has applications in many fields including medical image analysis, facial recognition, object recognition in manufacturing, monitoring and surveillance, autonomous vehicles, augmented reality, and more. It is also used in retail for inventory management and in agriculture for crop monitoring.</p>
+                            </div>
+                            
+                            <div>
+                                <h4 class="text-xl font-semibold text-gray-800 mb-4">Related Projects</h4>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition duration-300">
+                                        <h5 class="font-medium text-gray-800 mb-2">Face Recognition</h5>
+                                        <p class="text-gray-600 text-sm mb-2">Real-time face detection and recognition system.</p>
+                                        <div class="flex flex-wrap gap-1">
+                                            <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-xs">Python</span>
+                                            <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-xs">OpenCV</span>
+                                        </div>
+                                    </div>
+                                    <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition duration-300">
+                                        <h5 class="font-medium text-gray-800 mb-2">Object Detection</h5>
+                                        <p class="text-gray-600 text-sm mb-2">Detecting objects in real-time video streams.</p>
+                                        <div class="flex flex-wrap gap-1">
+                                            <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-xs">Python</span>
+                                            <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-xs">YOLOv5</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Ethical AI Module -->
+        <div id="ethical-ai-page" class="page-transition py-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center mb-8">
+                    <button onclick="goBack()" class="flex items-center text-pastelPeach hover:text-pastelPurple">
+                        <i class="fas fa-arrow-left mr-2"></i> Back to Modules
+                    </button>
+                    <span class="bg-pastelPeach text-white px-4 py-2 rounded-full text-sm font-medium">Ethical AI</span>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-xl overflow-hidden">
+                    <div class="md:flex">
+                        <div class="md:w-1/3 bg-pastelPeach p-8 md:p-12 flex flex-col justify-center">
+                            <div class="text-center mb-8">
+                                <div class="bg-white text-pastelPeach w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <i class="fas fa-balance-scale text-3xl"></i>
+                                </div>
+                                <h2 class="text-2xl font-bold text-gray-800">Ethical AI</h2>
+                                <p class="text-gray-600 mt-2">Responsible Development</p>
+                            </div>
+                            
+                            <div class="space-y-4">
+                                <div class="flex items-center">
+                                    <div class="bg-white text-pastelPeach w-10 h-10 rounded-full flex items-center justify-center mr-4">
+                                        <i class="fas fa-exclamation-triangle"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-800">Bias Detection</h4>
+                                        <p class="text-gray-600 text-sm">Fairness Metrics</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-center">
+                                    <div class="bg-white text-pastelPeach w-10 h-10 rounded-full flex items-center justify-center mr-4">
+                                        <i class="fas fa-search"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-800">Explainability</h4>
+                                        <p class="text-gray-600 text-sm">Interpretable Models</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-center">
+                                    <div class="bg-white text-pastelPeach w-10 h-10 rounded-full flex items-center justify-center mr-4">
+                                        <i class="fas fa-shield-alt"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-800">Privacy</h4>
+                                        <p class="text-gray-600 text-sm">Data Protection</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="md:w-2/3 p-8 md:p-12">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-6">Ethical AI</h3>
+                            <p class="text-gray-600 mb-6">Ethical AI refers to the development and use of artificial intelligence in a way that is aligned with ethical principles and values. It encompasses concerns about fairness, accountability, transparency, and the broader impact of AI on society.</p>
+                            
+                            <div class="mb-8">
+                                <h4 class="text-xl font-semibold text-gray-800 mb-4">Key Principles</h4>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="bg-gray-50 p-4 rounded-lg">
+                                        <h5 class="font-medium text-gray-800 mb-2">Fairness</h5>
+                                        <p class="text-gray-600 text-sm">Ensuring AI systems treat all people fairly and avoid bias.</p>
+                                    </div>
+                                    <div class="bg-gray-50 p-4 rounded-lg">
+                                        <h5 class="font-medium text-gray-800 mb-2">Transparency</h5>
+                                        <p class="text-gray-600 text-sm">Making AI decision-making processes understandable.</p>
+                                    </div>
+                                    <div class="bg-gray-50 p-4 rounded-lg">
+                                        <h5 class="font-medium text-gray-800 mb-2">Accountability</h5>
+                                        <p class="text-gray-600 text-sm">Establishing responsibility for AI systems and their outcomes.</p>
+                                    </div>
+                                    <div class="bg-gray-50 p-4 rounded-lg">
+                                        <h5 class="font-medium text-gray-800 mb-2">Privacy</h5>
+                                        <p class="text-gray-600 text-sm">Protecting personal data used in AI systems.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-8">
+                                <h4 class="text-xl font-semibold text-gray-800 mb-4">Challenges</h4>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="bg-pastelPeach text-white px-3 py-1 rounded-full text-xs">Algorithmic Bias</span>
+                                    <span class="bg-pastelBlue text-white px-3 py-1 rounded-full text-xs">Data Privacy</span>
+                                    <span class="bg-pastelGreen text-white px-3 py-1 rounded-full text-xs">Job Displacement</span>
+                                    <span class="bg-pastelPurple text-white px-3 py-1 rounded-full text-xs">Security Risks</span>
+                                </div>
+                                <p class="text-gray-600">Ethical AI faces several challenges including the potential for bias in algorithms, privacy concerns with data collection, the impact of automation on employment, security vulnerabilities in AI systems, and the difficulty of aligning AI behavior with human values. There are also challenges in implementing ethical principles in practice across different cultural contexts.</p>
+                            </div>
+                            
+                            <div>
+                                <h4 class="text-xl font-semibold text-gray-800 mb-4">Related Projects</h4>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition duration-300">
+                                        <h5 class="font-medium text-gray-800 mb-2">Bias Detection Tool</h5>
+                                        <p class="text-gray-600 text-sm mb-2">Analyze datasets and models for potential biases.</p>
+                                        <div class="flex flex-wrap gap-1">
+                                            <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-xs">Python</span>
+                                            <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-xs">Fairlearn</span>
+                                        </div>
+                                    </div>
+                                    <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition duration-300">
+                                        <h5 class="font-medium text-gray-800 mb-2">Explainability Dashboard</h5>
+                                        <p class="text-gray-600 text-sm mb-2">Visualize model decisions and feature importance.</p>
+                                        <div class="flex flex-wrap gap-1">
+                                            <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-xs">Python</span>
+                                            <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-xs">SHAP</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="md:flex md:items-center md:justify-between">
+                <div class="flex items-center">
+                    <i class="fas fa-robot text-2xl text-pastelPurple mr-2"></i>
+                    <span class="text-xl font-semibold">AI Portfolio</span>
+                </div>
+                <div class="mt-4 md:mt-0">
+                    <p class="text-gray-400">© 2023 AI Portfolio. All rights reserved.</p>
+                </div>
+                <div class="mt-4 md:mt-0 flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <i class="fab fa-medium"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    mobileMenu.classList.add('hidden');
+                    
+                    // Calculate position with offset for fixed header
+                    const headerHeight = document.querySelector('nav').offsetHeight;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+                    
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add shadow to navbar on scroll
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 10) {
+                nav.classList.add('shadow-lg');
+            } else {
+                nav.classList.remove('shadow-lg');
+            }
+        });
+
+        // Module page navigation
+        function loadModule(moduleId) {
+            document.getElementById('content').classList.add('hidden');
+            document.getElementById('module-pages').classList.remove('hidden');
+            
+            // Hide all module pages
+            document.querySelectorAll('#module-pages > div').forEach(page => {
+                page.classList.add('hidden');
+            });
+            
+            // Show the selected module page
+            document.getElementById(`${moduleId}-page`).classList.remove('hidden');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        function goBack() {
+            document.getElementById('content').classList.remove('hidden');
+            document.getElementById('module-pages').classList.add('hidden');
+            
+            // Scroll to modules section
+            document.getElementById('modules').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
