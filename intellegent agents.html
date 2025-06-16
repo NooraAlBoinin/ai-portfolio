@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noora Alboinin's ePortfolio - Machine Learning</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom CSS for animations and effects */
+        .fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        .section-divider {
+            position: relative;
+            height: 100px;
+            overflow: hidden;
+        }
+        .section-divider::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            height: 100%;
+            background: linear-gradient(45deg, #c8e6c9, #a5d6a7);
+            clip-path: polygon(0 0, 100% 0, 100% 70%, 0 100%);
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #4f46e5;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .active-nav::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans antialiased">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="#" class="flex-shrink-0 flex items-center">
+                        <i class="fas fa-robot text-green-400 text-2xl mr-2"></i>
+                        <span class="text-xl font-bold text-gray-900">Noora's ePortfolio</span>
+                    </a>
+                </div>
+                <div class="hidden md:ml-6 md:flex md:items-center md:space-x-8">
+                    <a href="#welcome" class="nav-link text-gray-900 px-3 py-2 text-sm font-medium">Welcome</a>
+                    <a href="#units" class="nav-link text-gray-900 px-3 py-2 text-sm font-medium">Units</a>
+                    <a href="#projects" class="nav-link text-gray-900 px-3 py-2 text-sm font-medium">Projects</a>
+                    <a href="#reflection" class="nav-link text-gray-900 px-3 py-2 text-sm font-medium">Reflection</a>
+                    <a href="#acknowledgement" class="nav-link text-gray-900 px-3 py-2 text-sm font-medium">Acknowledgement</a>
+                </div>
+                <div class="-mr-2 flex items-center md:hidden">
+                    <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                        <span class="sr-only">Open main menu</span>
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div class="hidden md:hidden" id="mobile-menu">
+            <div class="pt-2 pb-3 space-y-1">
+                <a href="#welcome" class="block px-3 py-2 text-base font-medium text-gray-900 hover:bg-gray-50">Welcome</a>
+                <a href="#units" class="block px-3 py-2 text-base font-medium text-gray-900 hover:bg-gray-50">Units</a>
+                <a href="#projects" class="block px-3 py-2 text-base font-medium text-gray-900 hover:bg-gray-50">Projects</a>
+                <a href="#reflection" class="block px-3 py-2 text-base font-medium text-gray-900 hover:bg-gray-50">Reflection</a>
+                <a href="#acknowledgement" class="block px-3 py-2 text-base font-medium text-gray-900 hover:bg-gray-50">Acknowledgement</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div id="welcome" class="section-divider"></div>
+    <section class="py-16 bg-gradient-to-r from-green-50 to-green-100 text-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-8 items-center">
+                <div class="fade-in">
+                    <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl mb-6">
+                        Intelligent Agents Portfolio
+                    </h1>
+                    <p class="text-xl mb-8">
+                        Explore my learning journey through the Intelligent Agent Systems module—covering key theories, hands-on projects, and professional growth in AI development and collaboration.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#units" class="bg-white text-green-600 px-6 py-3 rounded-md text-lg font-medium hover:bg-gray-100 transition duration-300">
+                            Explore Units
+                        </a>
+                        <a href="#projects" class="bg-indigo-800 text-white px-6 py-3 rounded-md text-lg font-medium hover:bg-indigo-700 transition duration-300">
+                            View Projects
+                        </a>
+                    </div>
+                </div>
+                <div class="mt-12 lg:mt-0 fade-in">
+                    <div class="bg-white bg-opacity-20 backdrop-filter backdrop-blur-lg rounded-xl p-6 shadow-xl">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-green-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-laptop-code text-green-600 text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">Skills Developed</h3>
+                        </div>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-emerald-300 mt-1 mr-2"></i>
+                                <span>Problem-solving with agent-based computing</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-emerald-300 mt-1 mr-2"></i>
+                                <span>Programming with Python, Java, and GitHub</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-emerald-300 mt-1 mr-2"></i>
+                                <span>Design and implementation of intelligent systems</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-emerald-300 mt-1 mr-2"></i>
+                                <span>Team collaboration and project management</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Units Section -->
+    <div id="units" class="section-divider"></div>
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                    Module Units
+                </h2>
+                <p class="mt-4 max-w-2xl text-xl text-gray-600 mx-auto">
+                    A comprehensive journey through intelligent agent systems
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Unit 1 -->
+                <div class="bg-gray-50 rounded-xl p-6 shadow-sm card-hover fade-in">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-indigo-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-atom text-indigo-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900">Unit 1: Introduction to Agent-Based Computing</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        Core concepts of agent-based computing, focusing on how autonomous agents perceive their environments and act to achieve goals.
+                    </p>
+                    <div class="mb-4">
+                        <h4 class="font-semibold text-gray-800 mb-2">Learning Outcomes:</h4>
+                        <ul class="list-disc pl-5 space-y-1 text-gray-600">
+                            <li>Defined the principles of agent-based computing</li>
+                            <li>Identified technological trends driving intelligent agent systems</li>
+                            <li>Discussed agent collaboration and adaptation</li>
+                        </ul>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <a href="https://nooraalboinin.github.io/ePortfolio/documents/seminars/Unit%201%20-%20Seminar%201%20Summary.pdf" class="text-indigo-600 hover:text-indigo-800 text-sm font-medium flex items-center">
+                            <i class="fas fa-file-pdf mr-1"></i> Seminar 1 Summary
+                        </a>
+                        <a href="https://nooraalboinin.github.io/ePortfolio/documents/discussions/Initial%20Post%20for%20Collaborative%20Discussion%201.pdf" class="text-indigo-600 hover:text-indigo-800 text-sm font-medium flex items-center">
+                            <i class="fas fa-comments mr-1"></i> Discussion 1
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Unit 2 -->
+                <div class="bg-gray-50 rounded-xl p-6 shadow-sm card-hover fade-in">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-indigo-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-project-diagram text-indigo-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900">Unit 2: Introducing First Order Logic</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        Introduced First Order Logic (FOL), a core concept in AI used for representing knowledge and reasoning about intelligent agent behaviour.
+                    </p>
+                    <div class="mb-4">
+                        <h4 class="font-semibold text-gray-800 mb-2">Learning Outcomes:</h4>
+                        <ul class="list-disc pl-5 space-y-1 text-gray-600">
+                            <li>Understood logical foundations of FOL</li>
+                            <li>Practiced converting natural language into formal expressions</li>
+                            <li>Applied reasoning with FOL for decision-making</li>
+                        </ul>
+                    </div>
+                    <a href="https://nooraalboinin.github.io/ePortfolio/documents/seminars/Unit%202%20-%20Seminar%202%20Summary.pdf" class="text-indigo-600 hover:text-indigo-800 text-sm font-medium flex items-center">
+                        <i class="fas fa-file-pdf mr-1"></i> Seminar 2 Summary
+                    </a>
+                </div>
+                
+                <!-- Unit 3 -->
+                <div class="bg-gray-50 rounded-xl p-6 shadow-sm card-hover fade-in">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-indigo-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-chess-rook text-indigo-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900">Unit 3: Agent Architectures</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        Explored the evolution of agent architectures—from early symbolic reasoning systems to reactive and hybrid models.
+                    </p>
+                    <div class="mb-4">
+                        <h4 class="font-semibold text-gray-800 mb-2">Learning Outcomes:</h4>
+                        <ul class="list-disc pl-5 space-y-1 text-gray-600">
+                            <li>Explored symbolic, reactive, and hybrid models</li>
+                            <li>Differentiated key agent concepts within BDI models</li>
+                            <li>Investigated architecture use in real-world contexts</li>
+                        </ul>
+                    </div>
+                    <a href="https://nooraalboinin.github.io/ePortfolio/documents/discussions/Summary%20Post%20for%20Collaborative%20Discussion%201.pdf" class="text-indigo-600 hover:text-indigo-800 text-sm font-medium flex items-center">
+                        <i class="fas fa-comments mr-1"></i> Discussion Summary
+                    </a>
+                </div>
+                
+                <!-- Unit 4 -->
+                <div class="bg-gray-50 rounded-xl p-6 shadow-sm card-hover fade-in">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-indigo-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-random text-indigo-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900">Unit 4: Hybrid Agent Architectures</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        Explored hybrid agent architectures which integrate both reactive and deliberative components to enable agents to act quickly while reasoning about long-term goals.
+                    </p>
+                    <div class="mb-4">
+                        <h4 class="font-semibold text-gray-800 mb-2">Learning Outcomes:</h4>
+                        <ul class="list-disc pl-5 space-y-1 text-gray-600">
+                            <li>Understood how hybrid agents combine planning and immediate responsiveness</li>
+                            <li>Assessed the suitability of hybrid models for real-world problem-solving</li>
+                            <li>Explored case studies demonstrating strengths of this architecture</li>
+                        </ul>
+                    </div>
+                    <a href="https://nooraalboinin.github.io/ePortfolio/documents/seminars/Unit%204%20-%20Seminar%203%20Summary.pdf" class="text-indigo-600 hover:text-indigo-800 text-sm font-medium flex items-center">
+                        <i class="fas fa-file-pdf mr-1"></i> Seminar 3 Summary
+                    </a>
+                </div>
+                
+                <!-- Unit 5 -->
+                <div class="bg-gray-50 rounded-xl p-6 shadow-sm card-hover fade-in">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-indigo-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-comments text-indigo-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900">Unit 5: Agent Communication</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        Introduced the foundations of agent communication, including Speech Act Theory, communication languages like KQML, and the role of ontologies.
+                    </p>
+                    <div class="mb-4">
+                        <h4 class="font-semibold text-gray-800 mb-2">Learning Outcomes:</h4>
+                        <ul class="list-disc pl-5 space-y-1 text-gray-600">
+                            <li>Understood performatives and how agents use them</li>
+                            <li>Explored the design and purpose of ACLs like KQML</li>
+                            <li>Examined how shared vocabularies help agents avoid misinterpretation</li>
+                        </ul>
+                    </div>
+                    <a href="https://nooraalboinin.github.io/ePortfolio/documents/discussions/Initial%20Post%20for%20Collaborative%20Discussion%202.pdf" class="text-indigo-600 hover:text-indigo-800 text-sm font-medium flex items-center">
+                        <i class="fas fa-comments mr-1"></i> Discussion 2
+                    </a>
+                </div>
+                
+                <!-- Unit 6 -->
+                <div class="bg-gray-50 rounded-xl p-6 shadow-sm card-hover fade-in">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-indigo-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-users text-indigo-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900">Unit 6: Working Together</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        Explored agent communication using KQML, KIF, and Speech Act Theory, focusing on how agents exchange messages, negotiate, and form coalitions.
+                    </p>
+                    <div class="mb-4">
+                        <h4 class="font-semibold text-gray-800 mb-2">Learning Outcomes:</h4>
+                        <ul class="list-disc pl-5 space-y-1 text-gray-600">
+                            <li>Created structured agent conversations using KQML and KIF</li>
+                            <li>Assessed the role of ontologies and message performatives</li>
+                            <li>Applied theory to practical team-based agent scenarios</li>
+                        </ul>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <a href="https://nooraalboinin.github.io/ePortfolio/documents/seminars/Unit%206%20-%20Seminar%204%20Summary.pdf" class="text-indigo-600 hover:text-indigo-800 text-sm font-medium flex items-center">
+                            <i class="fas fa-file-pdf mr-1"></i> Seminar 4
+                        </a>
+                        <a href="https://nooraalboinin.github.io/ePortfolio/documents/activities/Unit6_Agent_Dialogue_KQML_KIF_UoEO_Harvard.pdf" class="text-indigo-600 hover:text-indigo-800 text-sm font-medium flex items-center">
+                            <i class="fas fa-tasks mr-1"></i> Agent Dialogue
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- View More Units Button -->
+            <div class="text-center mt-12">
+                <button id="show-more-units" class="bg-indigo-600 text-white px-6 py-3 rounded-md text-lg font-medium hover:bg-indigo-700 transition duration-300">
+                    View More Units <i class="fas fa-chevron-down ml-2"></i>
+                </button>
+            </div>
+            
+            <!-- Hidden Units (will be shown when button is clicked) -->
+            <div id="more-units" class="hidden mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Unit 7 -->
+                <div class="bg-gray-50 rounded-xl p-6 shadow-sm card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-indigo-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-language text-indigo-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900">Unit 7: Natural Language Processing (NLP)</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        Introduced Natural Language Processing (NLP) and its role in enabling intelligent agents to understand and generate human language.
+                    </p>
+                    <div class="mb-4">
+                        <h4 class="font-semibold text-gray-800 mb-2">Learning Outcomes:</h4>
+                        <ul class="list-disc pl-5 space-y-1 text-gray-600">
+                            <li>Recognised why syntax, context, and ambiguity make language hard to model</li>
+                            <li>Explored symbolic, statistical, and neural methods in NLP</li>
+                            <li>Reviewed technologies used to develop language-aware agents</li>
+                        </ul>
+                    </div>
+                    <a href="https://nooraalboinin.github.io/ePortfolio/documents/discussions/Summary%20Post%20for%20Collaborative%20Discussion%202.pdf" class="text-indigo-600 hover:text-indigo-800 text-sm font-medium flex items-center">
+                        <i class="fas fa-comments mr-1"></i> Discussion Summary
+                    </a>
+                </div>
+                
+                <!-- Unit 8 -->
+                <div class="bg-gray-50 rounded-xl p-6 shadow-sm card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-indigo-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-tree text-indigo-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900">Unit 8: Understanding NLP</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        Explored the foundations of Natural Language Processing (NLP) and its role in enabling intelligent agents to interpret and generate human language.
+                    </p>
+                    <div class="mb-4">
+                        <h4 class="font-semibold text-gray-800 mb-2">Learning Outcomes:</h4>
+                        <ul class="list-disc pl-5 space-y-1 text-gray-600">
+                            <li>Applied NLP techniques like Word2Vec and parse trees</li>
+                            <li>Explored NLP's role in intelligent agent communication</li>
+                        </ul>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <a href="https://nooraalboinin.github.io/ePortfolio/documents/seminars/Unit%208%20-%20Seminar%205%20Summary.pdf" class="text-indigo-600 hover:text-indigo-800 text-sm font-medium flex items-center">
+                            <i class="fas fa-file-pdf mr-1"></i> Seminar 5
+                        </a>
+                        <a href="https://nooraalboinin.github.io/ePortfolio/documents/activities/Unit8_Parse_Trees_UoEO_Harvard.pdf" class="text-indigo-600 hover:text-indigo-800 text-sm font-medium flex items-center">
+                            <i class="fas fa-tasks mr-1"></i> Parse Trees
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Unit 9 -->
+                <div class="bg-gray-50 rounded-xl p-6 shadow-sm card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-indigo-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-brain text-indigo-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900">Unit 9: Adaptive Algorithms</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        Introduced adaptive algorithms like ANNs and Deep Learning, highlighting their core functions, limitations, and impact on AI innovations.
+                    </p>
+                    <div class="mb-4">
+                        <h4 class="font-semibold text-gray-800 mb-2">Learning Outcomes:</h4>
+                        <ul class="list-disc pl-5 space-y-1 text-gray-600">
+                            <li>Understood how adaptive algorithms power modern AI systems</li>
+                            <li>Evaluated their strengths, weaknesses, and ethical concerns</li>
+                        </ul>
+                    </div>
+                    <a href="https://nooraalboinin.github.io/ePortfolio/documents/discussions/Initial%20Post%20for%20Collaborative%20Discussion%203.pdf" class="text-indigo-600 hover:text-indigo-800 text-sm font-medium flex items-center">
+                        <i class="fas fa-comments mr-1"></i> Discussion 3
+                    </a>
+                </div>
+                
+                <!-- Unit 10 -->
+                <div class="bg-gray-50 rounded-xl p-6 shadow-sm card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-indigo-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-microscope text-indigo-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900">Unit 10: Deep Learning in Action</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        Explored real-world applications of deep learning across healthcare, autonomous systems, and content generation.
+                    </p>
+                    <div class="mb-4">
+                        <h4 class="font-semibold text-gray-800 mb-2">Learning Outcomes:</h4>
+                        <ul class="list-disc pl-5 space-y-1 text-gray-600">
+                            <li>Examined practical uses of deep learning across sectors</li>
+                            <li>Discussed data transparency and socio-ethical concerns</li>
+                        </ul>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <a href="https://nooraalboinin.github.io/ePortfolio/documents/seminars/Unit%2010%20-%20Seminar%206%20Summary.pdf" class="text-indigo-600 hover:text-indigo-800 text-sm font-medium flex items-center">
+                            <i class="fas fa-file-pdf mr-1"></i> Seminar 6
+                        </a>
+                        <a href="https://nooraalboinin.github.io/ePortfolio/documents/activities/Unit10_DL_Application_Societal_Impact_UoEO_Harvard.pdf" class="text-indigo-600 hover:text-indigo-800 text-sm font-medium flex items-center">
+                            <i class="fas fa-tasks mr-1"></i> DL Activity
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Unit 11 -->
+                <div class="bg-gray-50 rounded-xl p-6 shadow-sm card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-indigo-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-industry text-indigo-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900">Unit 11: Intelligent Agents in Action</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        Brought together key topics—agent-based computing, deep learning, and adaptive algorithms—to explore real-world applications.
+                    </p>
+                    <div class="mb-4">
+                        <h4 class="font-semibold text-gray-800 mb-2">Learning Outcomes:</h4>
+                        <ul class="list-disc pl-5 space-y-1 text-gray-600">
+                            <li>Applied agent systems to manufacturing and financial services</li>
+                            <li>Assessed the role of agents in automation and complex environments</li>
+                        </ul>
+                    </div>
+                    <a href="https://nooraalboinin.github.io/ePortfolio/documents/discussions/Summary%20Post%20for%20Collaborative%20Discussion%203.pdf" class="text-indigo-600 hover:text-indigo-800 text-sm font-medium flex items-center">
+                        <i class="fas fa-comments mr-1"></i> Discussion Summary
+                    </a>
+                </div>
+                
+                <!-- Unit 12 -->
+                <div class="bg-gray-50 rounded-xl p-6 shadow-sm card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-indigo-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-crystal-ball text-indigo-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900">Unit 12: The Future of Intelligent Agents</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        Focused on the future of intelligent systems, particularly deep learning and generative AI, exploring predictions on impact.
+                    </p>
+                    <div class="mb-4">
+                        <h4 class="font-semibold text-gray-800 mb-2">Learning Outcomes:</h4>
+                        <ul class="list-disc pl-5 space-y-1 text-gray-600">
+                            <li>Explored future directions of intelligent technologies</li>
+                            <li>Discussed their long-term societal and ethical implications</li>
+                            <li>Assessed the evolving role of deep learning</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <div id="projects" class="section-divider"></div>
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                    Key Projects
+                </h2>
+                <p class="mt-4 max-w-2xl text-xl text-gray-600 mx-auto">
+                    Practical applications of intelligent agent concepts
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Final Project -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg card-hover fade-in">
+                    <div class="h-48 bg-gradient-to-r from-green-200 to-teal-200 flex items-center justify-center">
+                        <i class="fas fa-robot text-white text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">Modular Multi-Agent AI System</h3>
+                        <p class="text-gray-600 mb-4">
+                            Developed a modular MAS for anomaly detection using Fitbit data. Agents handled retrieval, validation, analysis, and reporting. An Isolation Forest with PCA visualisation detected behavioural outliers in a healthcare context.
+                        </p>
+                        <div class="mb-4">
+                            <h4 class="font-semibold text-gray-800 mb-2">Key Features:</h4>
+                            <ul class="list-disc pl-5 space-y-1 text-gray-600">
+                                <li>Modular architecture with specialized agents</li>
+                                <li>Anomaly detection using Isolation Forest</li>
+                                <li>PCA for dimensionality reduction and visualization</li>
+                                <li>Healthcare-focused application</li>
+                            </ul>
+                        </div>
+                        <div class="flex flex-wrap gap-4">
+                            <a href="https://www.kaggle.com/datasets/linknetanalytics/my-fitbit-watch-datasets" class="bg-indigo-100 text-indigo-700 px-4 py-2 rounded-md font-medium hover:bg-indigo-200 transition duration-300 flex items-center">
+                                <i class="fas fa-database mr-2"></i> Dataset
+                            </a>
+                            <a href="https://nooraalboinin.github.io/ePortfolio/documents/A%20Modular%20Multi-Agent%20AI%20System.pptx" class="bg-indigo-100 text-indigo-700 px-4 py-2 rounded-md font-medium hover:bg-indigo-200 transition duration-300 flex items-center">
+                                <i class="fas fa-file-powerpoint mr-2"></i> Presentation
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Team Project -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg card-hover fade-in">
+                    <div class="h-48 bg-gradient-to-r from-emerald-400 to-teal-500 flex items-center justify-center">
+                        <i class="fas fa-users text-white text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">Team Project & Feedback</h3>
+                        <p class="text-gray-600 mb-4">
+                            Collaborating on the MAS project enhanced my skills in system design, AI-driven anomaly detection, and remote teamwork. I contributed to technical documentation and learned to respond constructively to feedback.
+                        </p>
+                        <div class="mb-4">
+                            <h4 class="font-semibold text-gray-800 mb-2">Key Learnings:</h4>
+                            <ul class="list-disc pl-5 space-y-1 text-gray-600">
+                                <li>System design and architecture planning</li>
+                                <li>AI-driven anomaly detection techniques</li>
+                                <li>Remote teamwork and collaboration</li>
+                                <li>Responding to and implementing feedback</li>
+                            </ul>
+                        </div>
+                        <div class="flex flex-wrap gap-4">
+                            <a href="https://nooraalboinin.github.io/ePortfolio/documents/Meeting%20notes%201%20Meeting.pdf" class="bg-emerald-100 text-emerald-700 px-4 py-2 rounded-md font-medium hover:bg-emerald-200 transition duration-300 flex items-center">
+                                <i class="fas fa-file-alt mr-2"></i> Meeting Notes
+                            </a>
+                            <a href="https://nooraalboinin.github.io/ePortfolio/feedback/Development%20Team%20Project%20-%20Project%20Report.pdf" class="bg-emerald-100 text-emerald-700 px-4 py-2 rounded-md font-medium hover:bg-emerald-200 transition duration-300 flex items-center">
+                                <i class="fas fa-file-pdf mr-2"></i> Project Report
+                            </a>
+                            <a href="https://nooraalboinin.github.io/ePortfolio/feedback/Feedback%20-%20Development%20Team%20Project.pdf" class="bg-emerald-100 text-emerald-700 px-4 py-2 rounded-md font-medium hover:bg-emerald-200 transition duration-300 flex items-center">
+                                <i class="fas fa-comment-alt mr-2"></i> Feedback
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reflection Section -->
+    <div id="reflection" class="section-divider"></div>
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                    Final Reflection
+                </h2>
+                <p class="mt-4 max-w-2xl text-xl text-gray-600 mx-auto">
+                    My learning journey through Intelligent Agent Systems
+                </p>
+            </div>
+            
+            <div class="bg-gray-50 rounded-xl p-8 shadow-sm fade-in">
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- WHAT -->
+                    <div>
+                        <div class="flex items-center mb-4">
+                            <div class="bg-indigo-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-question-circle text-indigo-600"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900">WHAT?</h3>
+                        </div>
+                        <p class="text-gray-600">
+                            Throughout the Intelligent Agent Systems module, I engaged with a range of concepts that deepened my understanding of agent-based computing and its real-world applications. My final project, "A Modular Multi-Agent AI System for Anomaly Detection in Fitbit Data," synthesised this learning.
+                        </p>
+                        <a href="https://nooraalboinin.github.io/ePortfolio/documents/Intelligent%20Agent%20Systems%20Reflection.pdf" class="mt-4 inline-flex items-center text-indigo-600 hover:text-indigo-800 font-medium">
+                            Read full reflection <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                    
+                    <!-- SO WHAT -->
+                    <div>
+                        <div class="flex items-center mb-4">
+                            <div class="bg-indigo-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-lightbulb text-indigo-600"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900">SO WHAT?</h3>
+                        </div>
+                        <p class="text-gray-600">
+                            One pivotal moment came during the evaluation of our MAS architecture. Initial designs proposed a centralized model, but team feedback raised concerns about scalability. We pivoted to a multi-agent architecture, teaching me the value of adaptive planning and iterative co-design.
+                        </p>
+                        <a href="https://nooraalboinin.github.io/ePortfolio/documents/Intelligent%20Agent%20Systems%20Reflection.pdf" class="mt-4 inline-flex items-center text-indigo-600 hover:text-indigo-800 font-medium">
+                            Read full reflection <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                    
+                    <!-- NOW WHAT -->
+                    <div>
+                        <div class="flex items-center mb-4">
+                            <div class="bg-indigo-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-road text-indigo-600"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900">NOW WHAT?</h3>
+                        </div>
+                        <p class="text-gray-600">
+                            Looking ahead, this module has laid a strong foundation for my future in AI. I now feel confident in developing modular AI architectures and understand the value of structuring agents around autonomy and communication. I plan to pursue further reading on explainable AI (XAI).
+                        </p>
+                        <a href="https://nooraalboinin.github.io/ePortfolio/documents/Intelligent%20Agent%20Systems%20Reflection.pdf" class="mt-4 inline-flex items-center text-indigo-600 hover:text-indigo-800 font-medium">
+                            Read full reflection <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Skills Developed -->
+                <div class="mt-12">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6 text-center">Skills Developed</h3>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                        <div class="bg-white p-4 rounded-lg shadow-sm flex items-center">
+                            <div class="bg-indigo-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-clock text-indigo-600"></i>
+                            </div>
+                            <span class="font-medium text-gray-800">Time Management</span>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-sm flex items-center">
+                            <div class="bg-indigo-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-brain text-indigo-600"></i>
+                            </div>
+                            <span class="font-medium text-gray-800">Critical Thinking</span>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-sm flex items-center">
+                            <div class="bg-indigo-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-comments text-indigo-600"></i>
+                            </div>
+                            <span class="font-medium text-gray-800">Technical Communication</span>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-sm flex items-center">
+                            <div class="bg-indigo-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-balance-scale text-indigo-600"></i>
+                            </div>
+                            <span class="font-medium text-gray-800">Ethical Awareness</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Acknowledgement Section -->
+    <div id="acknowledgement" class="section-divider"></div>
+    <section class="py-16 bg-gradient-to-r from-green-100 to-green-200 text-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-in">
+            <div class="bg-white bg-opacity-20 backdrop-filter backdrop-blur-lg rounded-xl p-8 max-w-3xl mx-auto">
+                <i class="fas fa-heart text-4xl mb-6 text-white"></i>
+                <h2 class="text-3xl font-bold mb-4">Acknowledgement</h2>
+                <p class="text-xl mb-6">
+                    Grateful to Dr. Stelios Sotiriadis for his guidance and expertise throughout the Intelligent Agent Systems module.
+                </p>
+                <p class="text-lg">
+                    His insights and support were invaluable in deepening my understanding of agent-based computing and its applications.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Noora Alboinin's ePortfolio</h3>
+                    <p class="text-gray-400">
+                        A showcase of my learning journey through the Intelligent Agent Systems module.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#welcome" class="text-gray-400 hover:text-white transition duration-300">Welcome</a></li>
+                        <li><a href="#units" class="text-gray-400 hover:text-white transition duration-300">Units</a></li>
+                        <li><a href="#projects" class="text-gray-400 hover:text-white transition duration-300">Projects</a></li>
+                        <li><a href="#reflection" class="text-gray-400 hover:text-white transition duration-300">Reflection</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Connect</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-github text-2xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-linkedin text-2xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fas fa-envelope text-2xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Noora Alboinin's ePortfolio. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 bg-green-300 text-white p-3 rounded-full shadow-lg hover:bg-green-400 transition duration-300 hidden">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Show more units
+        document.getElementById('show-more-units').addEventListener('click', function() {
+            const moreUnits = document.getElementById('more-units');
+            const button = this;
+            
+            moreUnits.classList.toggle('hidden');
+            
+            if (moreUnits.classList.contains('hidden')) {
+                button.innerHTML = 'View More Units <i class="fas fa-chevron-down ml-2"></i>';
+            } else {
+                button.innerHTML = 'View Less Units <i class="fas fa-chevron-up ml-2"></i>';
+            }
+        });
+
+        // Back to top button
+        window.addEventListener('scroll', function() {
+            const backToTopButton = document.getElementById('back-to-top');
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('hidden');
+            } else {
+                backToTopButton.classList.add('hidden');
+            }
+        });
+
+        document.getElementById('back-to-top').addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                    
+                    // Update active nav link
+                    document.querySelectorAll('.nav-link').forEach(link => {
+                        link.classList.remove('active-nav');
+                    });
+                    this.classList.add('active-nav');
+                }
+            });
+        });
+
+        // Set active nav link based on scroll position
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section, .section-divider');
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (window.pageYOffset >= sectionTop - 100) {
+                    currentSection = '#' + section.getAttribute('id');
+                }
+            });
+            
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active-nav');
+                if (link.getAttribute('href') === currentSection) {
+                    link.classList.add('active-nav');
+                }
+            });
+        });
+
+        // Add fade-in animation to elements when they come into view
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeInObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fadeIn');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        fadeElements.forEach(element => {
+            fadeInObserver.observe(element);
+        });
+    </script>
+</body>
+</html>
