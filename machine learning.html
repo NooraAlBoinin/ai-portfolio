@@ -1,3 +1,14 @@
+
+    <!-- Mobile menu toggle (hidden on desktop) -->
+    <div class="md:hidden fixed top-4 left-4 z-50">
+        <button id="mobile-menu-button" class="bg-white p-2 rounded-md shadow-lg">
+            <i class="fas fa-bars text-xl text-purple-600"></i>
+        </button>
+    </div>
+
+    <!-- Mobile menu overlay -->
+    <div id="mobile-menu" class="hidden fixed inset-0 bg-black bg-opacity-50 z-40"></div>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,15 +18,35 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* Mobile first: hide sidebar by default */
+        nav {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .nav-link.active {
+            color: #9333ea;
+            font-weight: 600;
+        }
+        .nav-link.active::after {
+            width: 100%;
+        }
+        
+        @media (min-width: 768px) {
+            nav {
+                transform: translateX(0);
+            }
+            body {
+                padding-left: 16rem;
+            }
+        }
+
         .gradient-bg {
-            background: linear-gradient(135deg, #F8E8EE 0%, #F2BED1 100%);
+            background: linear-gradient(135deg, #FFD1DC, #FFB347);
         }
-        .section-card {
-            transition: all 0.3s ease;
-        }
-        .section-card:hover {
+        .unit-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
         .nav-link {
             position: relative;
@@ -27,102 +58,143 @@
             height: 2px;
             bottom: 0;
             left: 0;
-            background-color: white;
+            background-color: #a777e3;
             transition: width 0.3s ease;
         }
         .nav-link:hover::after {
             width: 100%;
         }
-        .back-to-top {
+        .progress-bar {
+            transition: width 1s ease-in-out;
+        }
+        #backToTop {
+            display: none;
             position: fixed;
             bottom: 20px;
             right: 20px;
-            display: none;
             z-index: 99;
         }
     </style>
 </head>
-<body class="font-sans bg-gray-50">
-    <!-- Navigation -->
-    <nav class="gradient-bg text-gray-800 shadow-lg sticky top-0 z-50">
-        <div class="container mx-auto px-6 py-3">
-            <div class="flex justify-between items-center">
-                <div class="flex items-center space-x-4">
-                    <a href="#" class="text-2xl font-bold">Noora Alboinin</a>
-                </div>
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#home" class="nav-link py-2">Home</a>
-                    <a href="#professional" class="nav-link py-2">Professional Development</a>
-                    <a href="#units" class="nav-link py-2">Units</a>
-                    <a href="#reflection" class="nav-link py-2">Final Reflection</a>
-                </div>
-                <div class="md:hidden">
-                    <button id="menu-btn" class="text-white focus:outline-none">
-                        <i class="fas fa-bars text-2xl"></i>
-                    </button>
-                </div>
+<body class="font-sans bg-gray-50 pl-64">
+    <!-- Sidebar Navigation -->
+    <nav class="bg-white shadow-lg fixed left-0 top-0 h-full w-64 z-50 overflow-y-auto">
+        <div class="flex flex-col p-4">
+            <div class="mb-8 sticky top-0 bg-white pb-4">
+                <span class="text-xl font-bold text-purple-600">Noora Alboinin</span>
             </div>
-            <!-- Mobile menu -->
-            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
-                <a href="#home" class="block py-2 px-4 hover:bg-blue-700 rounded">Home</a>
-                <a href="#professional" class="block py-2 px-4 hover:bg-blue-700 rounded">Professional Development</a>
-                <a href="#units" class="block py-2 px-4 hover:bg-blue-700 rounded">Units</a>
-                <a href="#reflection" class="block py-2 px-4 hover:bg-blue-700 rounded">Final Reflection</a>
+            <div class="flex flex-col space-y-4">
+                <a href="#home" class="nav-link text-gray-700 hover:text-purple-600 px-3 py-2">Home</a>
+                <a href="#overview" class="nav-link text-gray-700 hover:text-purple-600 px-3 py-2">Overview</a>
+                <a href="#units" class="nav-link text-gray-700 hover:text-purple-600 px-3 py-2">Units</a>
+                <div class="pl-4 flex flex-col space-y-2">
+                    <a href="#unit1" class="nav-link text-gray-600 hover:text-purple-500 px-3 py-1 text-sm">Unit 1</a>
+                    <a href="#unit2" class="nav-link text-gray-600 hover:text-purple-500 px-3 py-1 text-sm">Unit 2</a>
+                    <a href="#unit3" class="nav-link text-gray-600 hover:text-purple-500 px-3 py-1 text-sm">Unit 3</a>
+                    <a href="#unit4" class="nav-link text-gray-600 hover:text-purple-500 px-3 py-1 text-sm">Unit 4</a>
+                    <a href="#unit5" class="nav-link text-gray-600 hover:text-purple-500 px-3 py-1 text-sm">Unit 5</a>
+                    <a href="#unit6" class="nav-link text-gray-600 hover:text-purple-500 px-3 py-1 text-sm">Unit 6</a>
+                    <a href="#unit7" class="nav-link text-gray-600 hover:text-purple-500 px-3 py-1 text-sm">Unit 7</a>
+                    <a href="#unit8" class="nav-link text-gray-600 hover:text-purple-500 px-3 py-1 text-sm">Unit 8</a>
+                    <a href="#unit9" class="nav-link text-gray-600 hover:text-purple-500 px-3 py-1 text-sm">Unit 9</a>
+                    <a href="#unit10" class="nav-link text-gray-600 hover:text-purple-500 px-3 py-1 text-sm">Unit 10</a>
+                    <a href="#unit11" class="nav-link text-gray-600 hover:text-purple-500 px-3 py-1 text-sm">Unit 11</a>
+                    <a href="#unit12" class="nav-link text-gray-600 hover:text-purple-500 px-3 py-1 text-sm">Unit 12</a>
+                </div>
+                <a href="#reflection" class="nav-link text-gray-700 hover:text-purple-600 px-3 py-2">Reflection</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="gradient-bg text-gray-800 py-20">
-        <div class="container mx-auto px-6 text-center">
-            <h1 class="text-4xl md:text-6xl font-bold mb-6">Machine Learning ePortfolio</h1>
-            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">Exploring key concepts, practical applications, and personal growth through various projects and reflections</p>
-            <a href="#units" class="bg-white text-pink-600 font-bold py-3 px-8 rounded-full hover:bg-gray-100 transition duration-300 inline-block">Explore Units</a>
+    <section id="home" class="gradient-bg text-white py-20">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-6">Welcome to My Machine Learning ePortfolio</h1>
+                    <p class="text-xl mb-8">Join me on my journey through the Machine Learning Module, where I explore key concepts, practical applications, and personal growth through various projects and reflections.</p>
+                    <a href="#units" class="bg-white text-purple-600 font-semibold px-6 py-3 rounded-lg hover:bg-gray-100 transition duration-300 inline-block">Explore Units</a>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <img src="https://nooraalboinin.github.io/ePortfolio/images/eda.jpg" alt="Machine Learning Illustration" class="rounded-lg shadow-xl w-full max-w-md">
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Professional Development -->
-    <section id="professional" class="py-16 bg-white">
-        <div class="container mx-auto px-6">
+    <!-- Professional Development Overview -->
+    <section id="overview" class="py-16 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Professional Development Overview</h2>
-            <div class="grid md:grid-cols-2 gap-8 items-center">
-                <div>
-                    <p class="text-lg text-gray-700 mb-6">This module has been an enriching experience, providing opportunities to strengthen essential skills such as time management, critical thinking, and teamwork within a virtual environment.</p>
-                    <p class="text-lg text-gray-700 mb-6">I have deepened my understanding of machine learning, focusing on applying algorithms to real-world problems. Collaborative projects and individual tasks have allowed me to grow professionally, setting a solid foundation for future work in AI and machine learning.</p>
-                </div>
-                <div class="bg-pink-50 p-8 rounded-lg">
-                    <h3 class="text-xl font-semibold mb-4 text-pink-800">Key Skills Developed</h3>
-                    <ul class="space-y-3">
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-pink-500 mt-1 mr-3"></i>
-                            <span class="text-gray-700">Programming with Python and ML libraries</span>
+            
+            <div class="grid md:grid-cols-2 gap-8 mb-12">
+                <div class="bg-pink-50 p-8 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-purple-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-brain text-purple-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800">Skills Developed</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">This module has been an enriching experience, providing opportunities to strengthen essential skills such as:</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-purple-500 mr-2"></i>
+                            <span>Time management</span>
                         </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-blue-500 mt-1 mr-3"></i>
-                            <span class="text-gray-700">Statistical analysis and data visualization</span>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-purple-500 mr-2"></i>
+                            <span>Critical thinking</span>
                         </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-blue-500 mt-1 mr-3"></i>
-                            <span class="text-gray-700">Critical thinking and problem-solving</span>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-purple-500 mr-2"></i>
+                            <span>Teamwork in virtual environments</span>
                         </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-blue-500 mt-1 mr-3"></i>
-                            <span class="text-gray-700">Virtual collaboration and teamwork</span>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-purple-500 mr-2"></i>
+                            <span>Machine learning application</span>
                         </li>
                     </ul>
                 </div>
-            </div>
-            
-            <div class="mt-16 bg-gray-100 p-8 rounded-lg">
-                <h3 class="text-2xl font-bold text-center mb-6 text-gray-800">Meet My Tutor</h3>
-                <div class="flex flex-col md:flex-row items-center">
-                    <div class="md:w-1/4 mb-6 md:mb-0 flex justify-center">
-                        <div class="w-32 h-32 rounded-full bg-blue-200 flex items-center justify-center">
-                            <i class="fas fa-user-graduate text-5xl text-blue-600"></i>
+                
+                <div class="bg-purple-50 p-8 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-purple-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-project-diagram text-purple-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800">Project Experience</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">Collaborative projects and individual tasks have allowed me to grow professionally:</p>
+                    <div class="mb-4">
+                        <h4 class="font-medium text-gray-700">Airbnb Listing Analysis</h4>
+                        <div class="w-full bg-gray-200 rounded-full h-2.5 mt-2">
+                            <div class="bg-purple-600 h-2.5 rounded-full progress-bar" style="width: 90%"></div>
                         </div>
                     </div>
-                    <div class="md:w-3/4 md:pl-8">
-                        <p class="text-lg text-gray-700">Special thanks to my tutor, <span class="font-semibold">Liz Coulter-Smith</span>, whose guidance and expertise in machine learning and creative coding have been instrumental in my learning journey. Her support has greatly enhanced my overall experience and understanding.</p>
+                    <div class="mb-4">
+                        <h4 class="font-medium text-gray-700">CNN for Object Recognition</h4>
+                        <div class="w-full bg-gray-200 rounded-full h-2.5 mt-2">
+                            <div class="bg-purple-600 h-2.5 rounded-full progress-bar" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-medium text-gray-700">Regression Analysis</h4>
+                        <div class="w-full bg-gray-200 rounded-full h-2.5 mt-2">
+                            <div class="bg-purple-600 h-2.5 rounded-full progress-bar" style="width: 80%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-gradient-to-r from-purple-100 to-indigo-100 p-8 rounded-lg shadow-md">
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="md:w-3/4 mb-6 md:mb-0">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Meet My Tutor</h3>
+                        <p class="text-gray-600">Special thanks to my tutor, Liz Coulter-Smith, whose guidance and expertise in machine learning and creative coding have been instrumental in my learning journey. Her support has greatly enhanced my overall experience and understanding.</p>
+                    </div>
+                    <div class="md:w-1/4 flex justify-center">
+                        <div class="bg-white p-2 rounded-full shadow-lg">
+                            <i class="fas fa-user-graduate text-purple-600 text-5xl"></i>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -131,267 +203,237 @@
 
     <!-- Units Section -->
     <section id="units" class="py-16 bg-gray-50">
-        <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Machine Learning Units</h2>
             
-            <!-- Unit Cards -->
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Unit 1 -->
-                <div class="section-card bg-white rounded-lg overflow-hidden shadow-md">
-                    <div class="gradient-bg text-white p-4">
-                        <h3 class="text-xl font-bold">Unit 1: Introduction to ML</h3>
+                <div id="unit1" class="bg-white rounded-lg shadow-md overflow-hidden unit-card transition duration-300">
+                    <div class="gradient-bg p-4 text-gray-800">
+                        <h3 class="text-xl font-semibold">Unit 1</h3>
+                        <p class="text-purple-100">Introduction to Machine Learning</p>
                     </div>
                     <div class="p-6">
-                        <p class="text-gray-700 mb-4">Understanding the background and applications of ML in Industry 4.0, including self-driving cars and personalized recommendations.</p>
-                        <div class="mb-4">
-                            <h4 class="font-semibold text-gray-800 mb-2">Key Topics:</h4>
-                            <ul class="list-disc list-inside text-gray-700 space-y-1">
-                                <li>Integration of Big Data and ML</li>
-                                <li>Ethical and Legal Considerations</li>
-                                <li>Programming and Statistical Analysis</li>
-                            </ul>
+                        <p class="text-gray-600 mb-4">Gained understanding of ML background and applications in Industry 4.0, including self-driving cars and automated banking.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">Big Data</span>
+                            <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">Ethics</span>
+                            <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">GDPR</span>
                         </div>
-                        <a href="https://drive.google.com/file/d/1wf-vxsNCd-k_zBZzh0mRPKkGcaJ68tsC/view?usp=sharing" target="_blank" class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center">
-                            View Seminar <i class="fas fa-external-link-alt ml-2"></i>
+                        <a href="#" class="text-purple-600 font-medium hover:text-purple-800 flex items-center">
+                            Learn more <i class="fas fa-arrow-right ml-2"></i>
                         </a>
                     </div>
                 </div>
-
+                
                 <!-- Unit 2 -->
-                <div class="section-card bg-white rounded-lg overflow-hidden shadow-md">
-                    <div class="gradient-bg text-white p-4">
-                        <h3 class="text-xl font-bold">Unit 2: Exploratory Data Analysis</h3>
+                <div id="unit2" class="bg-white rounded-lg shadow-md overflow-hidden unit-card transition duration-300">
+                    <div class="gradient-bg p-4 text-white">
+                        <h3 class="text-xl font-semibold">Unit 2</h3>
+                        <p class="text-purple-100">Exploratory Data Analysis</p>
                     </div>
                     <div class="p-6">
-                        <img src="https://nooraalboinin.github.io/ePortfolio/images/eda.jpg" alt="EDA Process Flowchart" class="w-full h-auto mb-4 rounded">
-                        <p class="text-gray-700 mb-4">Introduction to Exploratory Data Analysis (EDA) and its critical role in assessing raw data quality and uncovering hidden patterns.</p>
-                        <div class="mb-4">
-                            <h4 class="font-semibold text-gray-800 mb-2">Skills Gained:</h4>
-                            <ul class="list-disc list-inside text-gray-700 space-y-1">
-                                <li>Data Quality Assurance</li>
-                                <li>Feature Selection</li>
-                                <li>Data Visualization</li>
-                            </ul>
+                        <p class="text-gray-600 mb-4">Learned techniques for assessing raw data quality, identifying inconsistencies, and uncovering hidden patterns.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">Data Quality</span>
+                            <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">Visualization</span>
+                            <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">Outliers</span>
                         </div>
-                        <a href="https://drive.google.com/file/d/1PpybJM_bAD0vE_LVAkAoaC2U9IfOszdV/view?usp=sharing" target="_blank" class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center">
-                            View Seminar <i class="fas fa-external-link-alt ml-2"></i>
+                        <a href="#" class="text-purple-600 font-medium hover:text-purple-800 flex items-center">
+                            Learn more <i class="fas fa-arrow-right ml-2"></i>
                         </a>
                     </div>
                 </div>
-
+                
                 <!-- Unit 3 -->
-                <div class="section-card bg-white rounded-lg overflow-hidden shadow-md">
-                    <div class="gradient-bg text-white p-4">
-                        <h3 class="text-xl font-bold">Unit 3: Correlation & Regression</h3>
+                <div id="unit3" class="bg-white rounded-lg shadow-md overflow-hidden unit-card transition duration-300">
+                    <div class="gradient-bg p-4 text-white">
+                        <h3 class="text-xl font-semibold">Unit 3</h3>
+                        <p class="text-purple-100">Correlation & Regression</p>
                     </div>
                     <div class="p-6">
-                        <p class="text-gray-700 mb-4">Exploring different methods of association and regression in real-world scenarios including simple, multiple, and polynomial regression.</p>
-                        <div class="mb-4">
-                            <h4 class="font-semibold text-gray-800 mb-2">Learning Outcomes:</h4>
-                            <ul class="list-disc list-inside text-gray-700 space-y-1">
-                                <li>Applying correlation/regression analysis</li>
-                                <li>Understanding professional implications</li>
-                                <li>Data selection and preparation</li>
-                            </ul>
+                        <p class="text-gray-600 mb-4">Explored methods of association and regression in real-world scenarios including simple and multiple regression.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">Simple Regression</span>
+                            <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">Multiple Regression</span>
+                            <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">Polynomial</span>
                         </div>
-                        <a href="https://drive.google.com/file/d/1OmHGky9QiCAZlmxQwG5dWH74B3Myjxm3/view?usp=sharing" target="_blank" class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center">
-                            View Activity <i class="fas fa-external-link-alt ml-2"></i>
+                        <a href="#" class="text-purple-600 font-medium hover:text-purple-800 flex items-center">
+                            Learn more <i class="fas fa-arrow-right ml-2"></i>
                         </a>
                     </div>
                 </div>
-
+                
                 <!-- Unit 4 -->
-                <div class="section-card bg-white rounded-lg overflow-hidden shadow-md">
-                    <div class="gradient-bg text-white p-4">
-                        <h3 class="text-xl font-bold">Unit 4: Linear Regression with Scikit-Learn</h3>
+                <div id="unit4" class="bg-white rounded-lg shadow-md overflow-hidden unit-card transition duration-300">
+                    <div class="gradient-bg p-4 text-white">
+                        <h3 class="text-xl font-semibold">Unit 4</h3>
+                        <p class="text-purple-100">Linear Regression with Scikit-Learn</p>
                     </div>
                     <div class="p-6">
-                        <p class="text-gray-700 mb-4">Applying linear regression using Scikit-Learn, modeling simple and multivariate relationships, and evaluating model effectiveness.</p>
-                        <div class="mb-4">
-                            <h4 class="font-semibold text-gray-800 mb-2">Key Skills:</h4>
-                            <ul class="list-disc list-inside text-gray-700 space-y-1">
-                                <li>Regression with big datasets</li>
-                                <li>Model testing and improvement</li>
-                                <li>Scikit-Learn proficiency</li>
-                            </ul>
+                        <p class="text-gray-600 mb-4">Applied linear regression using Scikit-Learn, modeling simple and multivariate relationships, evaluating with R-squared.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">Scikit-Learn</span>
+                            <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">R-squared</span>
+                            <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">Optimization</span>
                         </div>
-                        <a href="https://drive.google.com/file/d/1LxxqoDZAGmv7lEtladY3wxvY8Pdxc3Nf/view?usp=sharing" target="_blank" class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center">
-                            View Seminar <i class="fas fa-external-link-alt ml-2"></i>
+                        <a href="#" class="text-purple-600 font-medium hover:text-purple-800 flex items-center">
+                            Learn more <i class="fas fa-arrow-right ml-2"></i>
                         </a>
                     </div>
                 </div>
-
+                
                 <!-- Unit 5 -->
-                <div class="section-card bg-white rounded-lg overflow-hidden shadow-md">
-                    <div class="gradient-bg text-white p-4">
-                        <h3 class="text-xl font-bold">Unit 5: Clustering</h3>
+                <div id="unit5" class="bg-white rounded-lg shadow-md overflow-hidden unit-card transition duration-300">
+                    <div class="gradient-bg p-4 text-white">
+                        <h3 class="text-xl font-semibold">Unit 5</h3>
+                        <p class="text-purple-100">Clustering</p>
                     </div>
                     <div class="p-6">
-                        <p class="text-gray-700 mb-4">Exploring cluster analysis for grouping objects based on similarities, covering K-means and agglomerative clustering techniques.</p>
-                        <div class="mb-4">
-                            <h4 class="font-semibold text-gray-800 mb-2">Key Concepts:</h4>
-                            <ul class="list-disc list-inside text-gray-700 space-y-1">
-                                <li>Fundamentals of clustering</li>
-                                <li>Distance measurement techniques</li>
-                                <li>Cluster quality assessment</li>
-                            </ul>
+                        <p class="text-gray-600 mb-4">Explored cluster analysis including K-means and agglomerative clustering, with methods for assessing cluster quality.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">K-means</span>
+                            <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">Agglomerative</span>
+                            <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">Jaccard</span>
                         </div>
-                        <a href="https://drive.google.com/file/d/1VCioefdSDHwuCaIPxn0XzI1voQ7Jo5p8/view?usp=sharing" target="_blank" class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center">
-                            View Activity <i class="fas fa-external-link-alt ml-2"></i>
+                        <a href="#" class="text-purple-600 font-medium hover:text-purple-800 flex items-center">
+                            Learn more <i class="fas fa-arrow-right ml-2"></i>
                         </a>
                     </div>
                 </div>
-
+                
                 <!-- Unit 6 -->
-                <div class="section-card bg-white rounded-lg overflow-hidden shadow-md">
-                    <div class="gradient-bg text-white p-4">
-                        <h3 class="text-xl font-bold">Unit 6: Clustering with Python</h3>
+                <div id="unit6" class="bg-white rounded-lg shadow-md overflow-hidden unit-card transition duration-300">
+                    <div class="gradient-bg p-4 text-white">
+                        <h3 class="text-xl font-semibold">Unit 6</h3>
+                        <p class="text-purple-100">Clustering with Python</p>
                     </div>
                     <div class="p-6">
-                        <p class="text-gray-700 mb-4">Applying K-means clustering to real-world datasets using Python's scikit-learn library and understanding AI bias challenges.</p>
-                        <div class="mb-4">
-                            <h4 class="font-semibold text-gray-800 mb-2">Group Project:</h4>
-                            <p class="text-gray-700">"Is the length of an Airbnb listing title correlated with its performance?"</p>
+                        <p class="text-gray-600 mb-4">Applied K-means clustering to real datasets using scikit-learn, focusing on solving complex problems in large datasets.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">Python</span>
+                            <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">scikit-learn</span>
+                            <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">AI Bias</span>
                         </div>
-                        <div class="space-y-2">
-                            <a href="https://drive.google.com/file/d/1sNY5BbNwSVm7ARvJHxC9Rjec2_Q0_qlC/view?usp=sharing" target="_blank" class="block text-blue-600 hover:text-blue-800 font-medium inline-flex items-center">
-                                View Seminar <i class="fas fa-external-link-alt ml-2"></i>
-                            </a>
-                            <a href="https://drive.google.com/file/d/1PjNQUAiiLXx5fdJEha6Jt-yCpTrYRVb1/view?usp=sharing" target="_blank" class="block text-blue-600 hover:text-blue-800 font-medium inline-flex items-center">
-                                Team Contract <i class="fas fa-external-link-alt ml-2"></i>
-                            </a>
-                        </div>
+                        <a href="#" class="text-purple-600 font-medium hover:text-purple-800 flex items-center">
+                            Learn more <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
                     </div>
                 </div>
             </div>
-
-            <!-- More Units Button -->
-            <div class="text-center mt-12">
-                <button id="show-more-units" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full transition duration-300">
-                    Show More Units <i class="fas fa-chevron-down ml-2"></i>
-                </button>
-            </div>
-
-            <!-- Hidden Units (Initially) -->
-            <div id="more-units" class="hidden grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+            
+            <!-- Additional Units -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
                 <!-- Unit 7 -->
-                <div class="section-card bg-white rounded-lg overflow-hidden shadow-md">
-                    <div class="gradient-bg text-white p-4">
-                        <h3 class="text-xl font-bold">Unit 7: Intro to ANNs</h3>
+                <div id="unit7" class="bg-white rounded-lg shadow-md overflow-hidden unit-card transition duration-300">
+                    <div class="gradient-bg p-4 text-white">
+                        <h3 class="text-xl font-semibold">Unit 7</h3>
+                        <p class="text-purple-100">Introduction to ANNs</p>
                     </div>
                     <div class="p-6">
-                        <p class="text-gray-700 mb-4">Exploring Artificial Neural Networks (ANNs) inspired by biological brain systems, covering activation functions and their applications.</p>
-                        <div class="mb-4">
-                            <h4 class="font-semibold text-gray-800 mb-2">Learning Outcomes:</h4>
-                            <ul class="list-disc list-inside text-gray-700 space-y-1">
-                                <li>Understanding ANN workings</li>
-                                <li>Developing basic ANN artefacts</li>
-                                <li>Engaging with ANN research</li>
-                            </ul>
+                        <p class="text-gray-600 mb-4">Explored Artificial Neural Networks inspired by biological brain systems, covering activation functions and applications.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">ANNs</span>
+                            <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">Activation</span>
+                            <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">Perceptron</span>
                         </div>
-                        <a href="https://drive.google.com/file/d/1u4cPnLYCHVN4oN-NSb_jiPEi6sIf34bg/view?usp=sharing" target="_blank" class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center">
-                            View Activity <i class="fas fa-external-link-alt ml-2"></i>
+                        <a href="#" class="text-purple-600 font-medium hover:text-purple-800 flex items-center">
+                            Learn more <i class="fas fa-arrow-right ml-2"></i>
                         </a>
                     </div>
                 </div>
-
+                
                 <!-- Unit 8 -->
-                <div class="section-card bg-white rounded-lg overflow-hidden shadow-md">
-                    <div class="gradient-bg text-white p-4">
-                        <h3 class="text-xl font-bold">Unit 8: Training ANNs</h3>
+                <div id="unit8" class="bg-white rounded-lg shadow-md overflow-hidden unit-card transition duration-300">
+                    <div class="gradient-bg p-4 text-white">
+                        <h3 class="text-xl font-semibold">Unit 8</h3>
+                        <p class="text-purple-100">Training ANNs</p>
                     </div>
                     <div class="p-6">
-                        <p class="text-gray-700 mb-4">Focusing on how ANNs learn through backpropagation and gradient descent, with applications in business like fraud detection.</p>
-                        <div class="mb-4">
-                            <h4 class="font-semibold text-gray-800 mb-2">Key Topics:</h4>
-                            <ul class="list-disc list-inside text-gray-700 space-y-1">
-                                <li>Backpropagation algorithm</li>
-                                <li>Gradient descent optimization</li>
-                                <li>AI-generated content risks</li>
-                            </ul>
+                        <p class="text-gray-600 mb-4">Focused on how ANNs learn by adjusting weights using backpropagation and gradient descent for optimal results.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">Backpropagation</span>
+                            <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">Gradient Descent</span>
+                            <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">Optimization</span>
                         </div>
-                        <a href="https://drive.google.com/file/d/1yjoLf7ZLgVInhN10Q50YBcXzSvPJnsmP/view?usp=sharing" target="_blank" class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center">
-                            View Seminar <i class="fas fa-external-link-alt ml-2"></i>
+                        <a href="#" class="text-purple-600 font-medium hover:text-purple-800 flex items-center">
+                            Learn more <i class="fas fa-arrow-right ml-2"></i>
                         </a>
                     </div>
                 </div>
-
+                
                 <!-- Unit 9 -->
-                <div class="section-card bg-white rounded-lg overflow-hidden shadow-md">
-                    <div class="gradient-bg text-white p-4">
-                        <h3 class="text-xl font-bold">Unit 9: Intro to CNNs</h3>
+                <div id="unit9" class="bg-white rounded-lg shadow-md overflow-hidden unit-card transition duration-300">
+                    <div class="gradient-bg p-4 text-white">
+                        <h3 class="text-xl font-semibold">Unit 9</h3>
+                        <p class="text-purple-100">Introduction to CNNs</p>
                     </div>
                     <div class="p-6">
-                        <p class="text-gray-700 mb-4">Exploring Convolutional Neural Networks (CNNs) for computer vision applications in healthcare, transportation, and agriculture.</p>
-                        <div class="mb-4">
-                            <h4 class="font-semibold text-gray-800 mb-2">Applications:</h4>
-                            <ul class="list-disc list-inside text-gray-700 space-y-1">
-                                <li>Medical imaging</li>
-                                <li>Self-driving cars</li>
-                                <li>Crop monitoring</li>
-                            </ul>
+                        <p class="text-gray-600 mb-4">Explored CNNs for computer vision in healthcare, transportation, and agriculture, covering CNN algorithms and Python libraries.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">CNNs</span>
+                            <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">Computer Vision</span>
+                            <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">Image Analysis</span>
                         </div>
-                        <a href="https://drive.google.com/file/d/1zOBKjq4cfoyTYISJkMMAr0uNyMh8ZcnW/view?usp=sharing" target="_blank" class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center">
-                            View Activity <i class="fas fa-external-link-alt ml-2"></i>
+                        <a href="#" class="text-purple-600 font-medium hover:text-purple-800 flex items-center">
+                            Learn more <i class="fas fa-arrow-right ml-2"></i>
                         </a>
                     </div>
                 </div>
-
+                
                 <!-- Unit 10 -->
-                <div class="section-card bg-white rounded-lg overflow-hidden shadow-md">
-                    <div class="gradient-bg text-white p-4">
-                        <h3 class="text-xl font-bold">Unit 10: CNN Interactive Learning</h3>
+                <div id="unit10" class="bg-white rounded-lg shadow-md overflow-hidden unit-card transition duration-300">
+                    <div class="gradient-bg p-4 text-white">
+                        <h3 class="text-xl font-semibold">Unit 10</h3>
+                        <p class="text-purple-100">CNN Interactive Learning</p>
                     </div>
                     <div class="p-6">
-                        <p class="text-gray-700 mb-4">Interactive learning tool to enhance understanding of CNNs by visually representing algorithms and experimenting with structures.</p>
-                        <div class="mb-4">
-                            <h4 class="font-semibold text-gray-800 mb-2">Skills Developed:</h4>
-                            <ul class="list-disc list-inside text-gray-700 space-y-1">
-                                <li>CNN architecture manipulation</li>
-                                <li>Weight and bias adjustment</li>
-                                <li>Performance impact analysis</li>
-                            </ul>
+                        <p class="text-gray-600 mb-4">Used interactive tools to experiment with CNN structures, weights, and biases to understand their influence on performance.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">Interactive</span>
+                            <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">Visualization</span>
+                            <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">Experimentation</span>
                         </div>
-                        <a href="https://drive.google.com/file/d/1Z8sUcxdk2NQ0NxKNwZbn9iBUNixeUzka/view?usp=sharing" target="_blank" class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center">
-                            View Seminar <i class="fas fa-external-link-alt ml-2"></i>
+                        <a href="#" class="text-purple-600 font-medium hover:text-purple-800 flex items-center">
+                            Learn more <i class="fas fa-arrow-right ml-2"></i>
                         </a>
                     </div>
                 </div>
-
+                
                 <!-- Unit 11 -->
-                <div class="section-card bg-white rounded-lg overflow-hidden shadow-md">
-                    <div class="gradient-bg text-white p-4">
-                        <h3 class="text-xl font-bold">Unit 11: Model Selection & Evaluation</h3>
+                <div id="unit11" class="bg-white rounded-lg shadow-md overflow-hidden unit-card transition duration-300">
+                    <div class="gradient-bg p-4 text-white">
+                        <h3 class="text-xl font-semibold">Unit 11</h3>
+                        <p class="text-purple-100">Model Selection & Evaluation</p>
                     </div>
                     <div class="p-6">
-                        <p class="text-gray-700 mb-4">Focusing on model selection and evaluation techniques, with an assignment on Neural Network Models for Object Recognition.</p>
-                        <div class="mb-4">
-                            <h4 class="font-semibold text-gray-800 mb-2">Assignment:</h4>
-                            <p class="text-gray-700">Developed a CNN using CIFAR-10 dataset with convolutional layers, pooling layers, and fully connected layers.</p>
+                        <p class="text-gray-600 mb-4">Focused on selecting appropriate models and evaluating performance using metrics like precision, recall, and F1-score.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">Model Selection</span>
+                            <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">Evaluation</span>
+                            <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">CIFAR-10</span>
                         </div>
-                        <a href="https://drive.google.com/file/d/16bZYD0Q2oRQmeQjLrMDqYNYJPPwDfqYe/view?usp=drive_link" target="_blank" class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center">
-                            View Activity <i class="fas fa-external-link-alt ml-2"></i>
+                        <a href="#" class="text-purple-600 font-medium hover:text-purple-800 flex items-center">
+                            Learn more <i class="fas fa-arrow-right ml-2"></i>
                         </a>
                     </div>
                 </div>
-
+                
                 <!-- Unit 12 -->
-                <div class="section-card bg-white rounded-lg overflow-hidden shadow-md">
-                    <div class="gradient-bg text-white p-4">
-                        <h3 class="text-xl font-bold">Unit 12: Industry 4.0 & ML</h3>
+                <div id="unit12" class="bg-white rounded-lg shadow-md overflow-hidden unit-card transition duration-300">
+                    <div class="gradient-bg p-4 text-white">
+                        <h3 class="text-xl font-semibold">Unit 12</h3>
+                        <p class="text-purple-100">Industry 4.0 & ML</p>
                     </div>
                     <div class="p-6">
-                        <p class="text-gray-700 mb-4">Exploring how Industry 4.0 is revolutionizing industries with ML, ICT, and digital twins, while addressing ethical challenges.</p>
-                        <div class="mb-4">
-                            <h4 class="font-semibold text-gray-800 mb-2">Key Topics:</h4>
-                            <ul class="list-disc list-inside text-gray-700 space-y-1">
-                                <li>Smart manufacturing</li>
-                                <li>Deepfakes challenges</li>
-                                <li>Future job opportunities</li>
-                            </ul>
+                        <p class="text-gray-600 mb-4">Explored how Industry 4.0 revolutionizes industries with ML, ICT, and digital twins, addressing ethical challenges like deepfakes.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">Industry 4.0</span>
+                            <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">Digital Twins</span>
+                            <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">Deepfakes</span>
                         </div>
-                        <a href="https://drive.google.com/file/d/1q1wzsKVcMOLKGGwjvzUnELVPsqIo_gdY/view?usp=sharing" target="_blank" class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center">
-                            View Seminar <i class="fas fa-external-link-alt ml-2"></i>
+                        <a href="#" class="text-purple-600 font-medium hover:text-purple-800 flex items-center">
+                            Learn more <i class="fas fa-arrow-right ml-2"></i>
                         </a>
                     </div>
                 </div>
@@ -401,91 +443,203 @@
 
     <!-- Final Reflection -->
     <section id="reflection" class="py-16 bg-white">
-        <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Final Reflection</h2>
             
-            <div class="max-w-4xl mx-auto">
-                <div class="bg-pink-50 p-8 rounded-lg mb-8">
-                    <h3 class="text-2xl font-bold mb-4 text-pink-800">WHAT: Key Experiences and Learning Outcomes</h3>
-                    <p class="text-gray-700 mb-4">Hands-on activities in this module helped me learn how AI and machine learning are changing businesses as part of the Fourth Industrial Revolution. Working on a Convolutional Neural Network (CNN) for picture classification with the CIFAR-10 dataset was a key experience.</p>
-                    <p class="text-gray-700">This was my first time working with CNNs, and it was both hard and fun to try to make them work like real neural networks. I learnt a lot about machine learning by setting up neural layers, pooling layers, and backpropagation to make the model work better.</p>
+            <div class="bg-purple-50 rounded-lg shadow-md p-8 mb-12">
+                <p class="text-gray-700 mb-6 text-lg">The lesson on machine learning has completely changed the way I think about things, from basic ideas to real-life examples. I didn't know much about machine learning at first, but now I'm comfortable with the different methods and how they affect my professional, social, and ethical life.</p>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- WHAT -->
+                    <div class="bg-white p-6 rounded-lg shadow-sm">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-purple-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-question-circle text-purple-600"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800">WHAT</h3>
+                        </div>
+                        <p class="text-gray-600">Hands-on activities helped me learn how AI and ML are changing businesses. Working on a CNN for the CIFAR-10 dataset was challenging yet rewarding. The Boeing 737 Max case study showed the dangers of flawed automated systems.</p>
+                    </div>
+                    
+                    <!-- SO WHAT -->
+                    <div class="bg-white p-6 rounded-lg shadow-sm">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-purple-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-lightbulb text-purple-600"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800">SO WHAT</h3>
+                        </div>
+                        <p class="text-gray-600">I realized that fairness, transparency, and accountability are as important as model accuracy. Biased datasets in our Unit 6 project showed how ML can reinforce social biases if not used properly.</p>
+                    </div>
+                    
+                    <!-- NOW WHAT -->
+                    <div class="bg-white p-6 rounded-lg shadow-sm">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-purple-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-arrow-right text-purple-600"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800">NOW WHAT</h3>
+                        </div>
+                        <p class="text-gray-600">I plan to apply these learnings to more complex ML projects, focusing on unsupervised and reinforcement learning. I'll prioritize ethical considerations in all future projects, ensuring models are transparent and accountable.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-gradient-to-r from-pink-100 to-orange-100 p-8 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Key Takeaways</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-purple-600 mt-1 mr-2"></i>
+                            <span>Mastered complex algorithms like CNNs and understood their ethical implications</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-purple-600 mt-1 mr-2"></i>
+                            <span>Developed strong teamwork skills in virtual environments</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-purple-600 mt-1 mr-2"></i>
+                            <span>Gained practical experience with real-world datasets and problems</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-purple-600 mt-1 mr-2"></i>
+                            <span>Learned the importance of model evaluation and selection</span>
+                        </li>
+                    </ul>
                 </div>
                 
-                <div class="bg-pink-100 p-8 rounded-lg mb-8">
-                    <h3 class="text-2xl font-bold mb-4 text-pink-900">SO WHAT: Interpretation and Impact</h3>
-                    <p class="text-gray-700 mb-4">These events have had a huge impact on how I think about the moral, economic, and social effects of machine learning. It's become clear to me that fairness, transparency, and responsibility are just as important as accuracy in models.</p>
-                    <p class="text-gray-700">For example, the biassed datasets we used for our Unit 6 group project made me realise how easy it is for machine learning models to reinforce social biases if they are not used properly. As part of our project, I helped find and fix these kinds of flaws by preprocessing the data and choosing the right features.</p>
-                </div>
-                
-                <div class="bg-pink-200 p-8 rounded-lg">
-                    <h3 class="text-2xl font-bold mb-4 text-pink-950">NOW WHAT: Future Applications and Growth</h3>
-                    <p class="text-gray-700 mb-4">I'm going to use the things I learnt in this lesson on bigger and more complicated machine learning projects in the future. I want to learn more about unsupervised learning and reinforcement learning in particular because I think they have a lot of promise for real-time data analysis, especially in finance and healthcare.</p>
-                    <p class="text-gray-700">Another thing I'm working on is getting better at choosing models and judging them. In order to make models that are useful in the real world, I want to make sure that they are not only correct but also open, honest, and moral.</p>
-                </div>
-                
-                <div class="mt-8 text-center">
-                    <a href="https://drive.google.com/file/d/1CTzRGMFcMO3w5xLcGmLnPdNIQsyaO-Gy/view?usp=sharing" target="_blank" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full transition duration-300">
-                        View Full Reflection <i class="fas fa-external-link-alt ml-2"></i>
-                    </a>
+                <div class="bg-gradient-to-r from-indigo-100 to-purple-100 p-8 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Future Goals</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-arrow-right text-purple-600 mt-1 mr-2"></i>
+                            <span>Explore unsupervised learning and reinforcement learning techniques</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-arrow-right text-purple-600 mt-1 mr-2"></i>
+                            <span>Apply ML in finance and healthcare sectors</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-arrow-right text-purple-600 mt-1 mr-2"></i>
+                            <span>Continue developing ethical AI practices</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-arrow-right text-purple-600 mt-1 mr-2"></i>
+                            <span>Contribute to open-source ML projects</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="gradient-bg text-gray-800 py-8">
-        <div class="container mx-auto px-6">
+    <footer class="bg-pink-200 text-gray-800 py-8">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-4 md:mb-0">
-                    <h3 class="text-xl font-bold">Noora Alboinin</h3>
-                    <p class="mt-2">Machine Learning ePortfolio</p>
+                <div class="mb-6 md:mb-0">
+                    <span class="text-xl font-bold">Noora Alboinin</span>
+                    <p class="text-gray-400 mt-2">Machine Learning ePortfolio</p>
                 </div>
                 <div class="flex space-x-6">
-                    <a href="#" class="hover:text-pink-400 transition duration-300">
-                        <i class="fab fa-github text-2xl"></i>
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <i class="fab fa-github text-xl"></i>
                     </a>
-                    <a href="#" class="hover:text-blue-200 transition duration-300">
-                        <i class="fab fa-linkedin text-2xl"></i>
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <i class="fab fa-linkedin text-xl"></i>
                     </a>
-                    <a href="#" class="hover:text-blue-200 transition duration-300">
-                        <i class="fas fa-envelope text-2xl"></i>
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <i class="fab fa-twitter text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <i class="fas fa-envelope text-xl"></i>
                     </a>
                 </div>
             </div>
-            <div class="border-t border-pink-300 mt-6 pt-6 text-center">
-                <p>&copy; 2024 Noora Alboinin. All rights reserved.</p>
+            <div class="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm">© 2025 Noora Alboinin. All rights reserved.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">Terms of Service</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">Sitemap</a>
+                </div>
             </div>
         </div>
     </footer>
 
     <!-- Back to Top Button -->
-    <a href="#" class="back-to-top bg-pink-600 text-white p-3 rounded-full shadow-lg hover:bg-pink-700 transition duration-300">
+    <button id="backToTop" class="bg-pink-400 text-white p-3 rounded-full shadow-lg hover:bg-pink-500 transition duration-300">
         <i class="fas fa-arrow-up"></i>
-    </a>
+    </button>
 
     <script>
         // Mobile menu toggle
-        document.getElementById('menu-btn').addEventListener('click', function() {
-            document.getElementById('mobile-menu').classList.toggle('hidden');
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const sidebar = document.querySelector('nav');
+            const overlay = document.getElementById('mobile-menu');
+            
+            sidebar.classList.toggle('-translate-x-full');
+            overlay.classList.toggle('hidden');
         });
 
-        // Show more units
-        document.getElementById('show-more-units').addEventListener('click', function() {
-            const moreUnits = document.getElementById('more-units');
-            const button = document.getElementById('show-more-units');
+        // Close menu when clicking overlay
+        document.getElementById('mobile-menu').addEventListener('click', function() {
+            const sidebar = document.querySelector('nav');
+            this.classList.add('hidden');
+            sidebar.classList.add('-translate-x-full');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+
+        // Navbar scrolling highlight
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
             
-            if (moreUnits.classList.contains('hidden')) {
-                moreUnits.classList.remove('hidden');
-                button.innerHTML = 'Show Less Units <i class="fas fa-chevron-up ml-2"></i>';
-            } else {
-                moreUnits.classList.add('hidden');
-                button.innerHTML = 'Show More Units <i class="fas fa-chevron-down ml-2"></i>';
-            }
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= (sectionTop - 150)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
         });
 
         // Back to top button
         window.addEventListener('scroll', function() {
-            const backToTopButton = document.querySelector('.back-to-top');
+            const backToTopButton = document.getElementById('backToTop');
             if (window.pageYOffset > 300) {
                 backToTopButton.style.display = 'block';
             } else {
@@ -493,21 +647,35 @@
             }
         });
 
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-                
-                // Close mobile menu if open
-                if (!document.getElementById('mobile-menu').classList.contains('hidden')) {
-                    document.getElementById('mobile-menu').classList.add('hidden');
-                }
+        document.getElementById('backToTop').addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
             });
         });
+
+        // Animate progress bars on scroll
+        function animateProgressBars() {
+            const progressBars = document.querySelectorAll('.progress-bar');
+            progressBars.forEach(bar => {
+                if (isElementInViewport(bar)) {
+                    bar.style.width = bar.getAttribute('style').split('width:')[1];
+                }
+            });
+        }
+
+        function isElementInViewport(el) {
+            const rect = el.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+
+        window.addEventListener('scroll', animateProgressBars);
+        window.addEventListener('load', animateProgressBars);
     </script>
 </body>
 </html>
